@@ -1,0 +1,12 @@
+.gradient-bg {
+  background: linear-gradient(135deg, #154A99 0%, #031D42 100%);
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, #154A99 0%, #031D42 50%, #154A99 100%);
+}
+
+.glass-effect {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+}
