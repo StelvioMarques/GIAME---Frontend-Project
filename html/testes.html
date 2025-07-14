@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt" class="font-sans antialiased bg-background">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard do Cria</title>
+  <link href="../css/tailwind/output.css" rel="stylesheet" />
+</head>
+<body class="flex flex-col min-h-screen bg-background text-secondary">
+
+  <!-- NAVBAR -->
+  <header class="flex items-center justify-between p-4 bg-white shadow-md">
+    <h1 class="text-xl font-bold text-primary">Painel Admin</h1>
+    <button class="px-4 py-2 text-white transition rounded bg-primary hover:bg-blue-800">
+      Sair
+    </button>
+  </header>
+
+  <!-- MAIN -->
+  <main class="flex-1 p-6 bg-muted">
+    <div class="max-w-4xl p-6 mx-auto bg-white shadow rounded-xl">
+
+      <h2 class="mb-2 text-2xl font-semibold text-secondary">Bem-vindo 👋</h2>
+      <p class="text-gray-600">Esse layout está fino, rápido e elegante.</p>
+
+      <div class="grid grid-cols-1 gap-4 mt-6 sm:grid-cols-2">
+        <div class="p-4 text-white rounded-lg shadow bg-primary">
+          <p class="text-sm uppercase opacity-75">Total de Usuários</p>
+          <h3 class="mt-1 text-2xl font-bold">102</h3>
+        </div>
+        <div class="p-4 rounded-lg shadow bg-highlight text-secondary">
+          <p class="text-sm uppercase opacity-75">Novos Cadastros</p>
+          <h3 class="mt-1 text-2xl font-bold">27</h3>
+        </div>
+      </div>
+
+      <div class="p-6 mt-8 text-white rounded-lg shadow-inner bg-gradient-brand">
+        <h4 class="text-lg font-semibold">Mensagem Importante</h4>
+        <p class="mt-2">Lembre-se de revisar os acessos dos usuários cadastrados no sistema.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-4 text-sm text-center text-gray-500 bg-white">
+    &copy; 2025 Criado por o Cria 🧠
+  </footer>
+</body>
+</html>
