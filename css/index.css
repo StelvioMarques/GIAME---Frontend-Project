@@ -33,13 +33,6 @@ h2,
 h3,
 h4,
 h5,
-h6 {
-  color: #1e293b;
-  /* Gray-800 refinado */
-  font-weight: 600;
-  line-height: 1.4;
-  margin-bottom: 0.5rem;
-}
 
 /* h1 um pouco maior */
 h1 {
@@ -53,13 +46,7 @@ h2 {
   /* 20px */
 }
 
-/* Parágrafos */
-p {
-  color: #4b5563;
-  /* Gray-600 */
-  font-size: 0.9375rem;
-  margin-bottom: 1rem;
-}
+
 
 /* Textos menores tipo legenda, descrição etc. */
 small,
@@ -190,8 +177,8 @@ small,
 
 .sidebar-logo {
   object-fit: contain;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3rem;
+  height: 3rem;
 }
 
 .sidebar-title {
@@ -211,8 +198,12 @@ small,
   transition: all 0.2s ease-in-out;
 }
 
+.sidebar-link i {
+  stroke-width: 2.5;
+}
+
 .sidebar-link:hover {
-  background-color: #f3f4f6;
+  background-color: #0F3A78;
 }
 
 .sidebar-subitem {
@@ -226,7 +217,7 @@ small,
 }
 
 .sidebar-subitem:hover {
-  background-color: #f9fafb;
+  background-color: #0F3A78;
 }
 
 /* ============================
@@ -283,7 +274,7 @@ small,
 }
 
 .collapsibble-menu-icons {
-  color: var(--color-primary);
+  color: white;
 }
 
 .collapsible-content {
@@ -300,7 +291,7 @@ small,
 
 .dropdown-transition {
   transition: transform 0.2s ease, opacity 0.2s ease;
-  color: var(--color-primary);
+  color: white;
 }
 
 .rotate-180 {

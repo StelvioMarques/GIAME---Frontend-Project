@@ -1,34 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full antialiased bg-gray-50">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clientes cadastrados</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Solicitações pendentes</title>
 
   <link rel="stylesheet" href="../../../../css/tailwind/output.css">
   <link rel="stylesheet" href="../../../../css/index.css">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- PRELOAD: conexão antecipada com o servidor das fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- SWAP: estratégia de renderização da fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body class="">
   <div class="flex h-screen">
     <!-- Sidebar -->
     <aside id="sidebar"
-      class="fixed z-50 w-64 h-full bg-white border-r shadow-lg sidebar-transition md:relative md:shadow-none sidebar-collapsed">
+      class="fixed z-50 w-64 h-full bg-gradient-brand border-r shadow-lg sidebar-transition md:relative md:shadow-none sidebar-collapsed">
 
       <!-- Cabeçalho da sidebar -->
       <div class="sidebar-header">
         <div class="flex-shrink-0">
-          <img src="../../../../assets/logos/azul escuro gradiente logo.png" alt="Logo GIAME" class="sidebar-logo" />
+          <img src="../../../../assets/logos/IMG-20250702-WA0005-removebg-preview.png" alt="Logo GIAME" class="sidebar-logo" />
         </div>
         <span class="sidebar-title">GIAME</span>
       </div>
 
       <!-- Conteúdo da sidebar -->
-      <div class="flex-1 overflow-y-auto bg-white">
+      <div class="flex-1 overflow-y-auto">
         <nav class="p-4">
 
           <!-- Item direto: Dashboard -->
