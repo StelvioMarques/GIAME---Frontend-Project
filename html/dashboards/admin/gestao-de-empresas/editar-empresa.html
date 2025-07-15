@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light dark" />
-  <title>Criar Empresa</title>
+  <title>Editar Empresa</title>
 
   <link rel="stylesheet" href="../../../../css/tailwind/output.css">
   <link rel="stylesheet" href="../../../../css/index.css">
@@ -135,11 +135,11 @@
         <div class="page-content">
           <h1
             class="mx-auto mt-6 font-semibold text-center text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text">
-            Nova Empresa
+            Editar Empresa
           </h1>
 
           <p class="text-sm text-center text-gray-600 ">
-            Preenche os dados abaixo para registrar uma nova empresa no sistema.
+            Preenche os dados abaixo para editar esta empresa no sistema.
           </p>
 
           <div class="flex justify-center px-4">
@@ -150,7 +150,8 @@
                   <label for="name" class="label">
                     Nome <span class="text-red-500">*</span>
                   </label>
-                  <input type="text" id="name" name="name" required placeholder="João da Silva S.A" class="input" />
+                  <input type="text" id="name" name="name" required placeholder="João da Silva S.A" class="input"
+                    value="João da Silva Lda" />
                 </div>
 
                 <!-- Endereço -->
@@ -159,7 +160,7 @@
                     Endereço <span class="text-red-500">*</span>
                   </label>
                   <input type="text" id="address" name="address" required placeholder="Rua 12, Bairro Azul, Luanda"
-                    class="input" />
+                    class="input" value="Maculusso, Luanda" />
                 </div>
 
                 <!-- Contacto -->
@@ -168,7 +169,8 @@
                     Contacto <span class="text-red-500">*</span>
                   </label>
                   <input type="text" id="contact" name="contact" required placeholder="+244 923 456 789"
-                    pattern="\+244 \d{3} \d{3} \d{3}" title="Formato esperado: +244 XXX XXX XXX" class="input" />
+                    pattern="\+244 \d{3} \d{3} \d{3}" title="Formato esperado: +244 XXX XXX XXX" class="input"
+                    value="+244 933 555 032" />
                 </div>
 
                 <!-- NIF -->
@@ -176,7 +178,8 @@
                   <label for="nif" class="label">
                     NIF <span class="text-red-500">*</span>
                   </label>
-                  <input type="text" id="nif" name="nif" required placeholder="Insira o NIF" class="input" />
+                  <input type="text" id="nif" name="nif" required placeholder="Insira o NIF" class="input"
+                    value="2222222222" />
                 </div>
 
                 <!-- Email -->
@@ -184,7 +187,8 @@
                   <label for="email" class="label">
                     Email <span class="text-red-500">*</span>
                   </label>
-                  <input type="email" id="email" name="email" required placeholder="email@exemplo.com" class="input" />
+                  <input type="email" id="email" name="email" required placeholder="email@exemplo.com" class="input"
+                    value="joao.company@gmail.com" />
                 </div>
 
                 <!-- Objecto social -->
@@ -193,7 +197,7 @@
                     Objecto Social <span class="text-red-500">*</span>
                   </label>
                   <input type="text" id="objecto-social" name="objecto-social" required
-                    placeholder="Insira o objecto social" class="input" />
+                    placeholder="Insira o objecto social" class="input" value="SPA" />
                 </div>
 
                 <!-- Data de constituicao -->
@@ -210,7 +214,7 @@
                     Capital Social <span class="text-red-500">*</span>
                   </label>
                   <input type="number" step="1000" id="capital-social" name="capital-social" required
-                    placeholder="Insira o capital social" class="input" />
+                    placeholder="Insira o capital social" class="input" value="1000000" />
                 </div>
 
                 <!-- Representante -->
@@ -219,7 +223,7 @@
                     Representante Legal <span class="text-red-500">*</span>
                   </label>
                   <input type="text" id="representante" name="representante" required placeholder="João da Silva"
-                    class="input" />
+                    class="input" value="João da Silva" />
                 </div>
 
                 <!-- Add sócios -->
@@ -235,10 +239,10 @@
                   </button>
                 </div>
 
-                <!-- Botão de editar -->
+                <!-- Botão de Actualizar -->
                 <div class="mt-2 form-full">
                   <button type="submit" class="btn bg-primary" onclick="window.location.href='ver-empresas.html'">
-                    Registrar Empresa
+                    Actualizar Empresa
                   </button>
                 </div>
               </form>
