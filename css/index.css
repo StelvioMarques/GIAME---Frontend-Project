@@ -92,6 +92,7 @@ small,
   cursor: pointer;
 }
 
+
 .btn:hover {
   background-color: var(--color-primary);
 }
@@ -388,11 +389,13 @@ body {
 /* celulas */
 td {
   padding: 20px;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
 /* cabeçalho */
 thead {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   line-height: 1rem;
   border-bottom-width: 1px;
   color: var(--color-secondary);
@@ -405,4 +408,29 @@ th {
 /* Linhas */
 tr:hover {
   background: #f9fafb;
+}
+
+/* ============================
+  Tabs
+============================= */
+.tab-content {
+  animation: fade 0.8s ease-in-out;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  display: none;
+}
+
+.modal.is-open {
+  display: block;
 }

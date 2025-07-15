@@ -25,7 +25,7 @@
   <div class="flex h-screen">
     <!-- Sidebar -->
     <aside id="sidebar"
-      class="fixed z-50 w-64 h-full bg-gradient-brand border-r shadow-lg sidebar-transition md:relative md:shadow-none sidebar-collapsed">
+      class="fixed z-50 w-64 h-full border-r shadow-lg bg-gradient-brand sidebar-transition md:relative md:shadow-none sidebar-collapsed">
 
       <!-- Cabeçalho da sidebar -->
       <div class="sidebar-header">
@@ -46,7 +46,7 @@
             Dashboard
           </a>
 
-          <!-- Seção: Usuários -->
+          <!-- Seção: Acessos -->
           <div class="collapsible-section">
             <button
               class="collapsible-trigger sidebar-link w-full flex items-center justify-between px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 group">
@@ -64,6 +64,52 @@
                 </a>
                 <a href="gestão de acessos/clientes-cadastrados.html" class="sidebar-subitem">
                   <i data-lucide="Contact" class="w-4 h-4"></i> Clientes cadastrados
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Seção: Utilizadores -->
+          <div class="collapsible-section">
+            <button
+              class="collapsible-trigger sidebar-link w-full flex items-center justify-between px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 group">
+              <div class="flex items-center gap-2">
+                <i data-lucide="user-cog" class="w-4 h-4 collapsibble-menu-icons"></i>
+                <span class="truncate">Gerir Utilizadores</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-4 h-4 collapsibble-menu-icons dropdown-transition"></i>
+            </button>
+
+            <div class="mt-1 collapsible-content">
+              <div class="pl-4 space-y-1 border-l-2">
+                <a href="gestao-de-usuarios/ver-usuarios.html" class="sidebar-subitem">
+                  <i data-lucide="users" class="w-4 h-4"></i> Ver Utilizadores
+                </a>
+                <a href="gestao-de-usuarios/criar-usuario.html" class="sidebar-subitem">
+                  <i data-lucide="user-plus" class="w-4 h-4"></i> Criar Utilizador
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Seção: Empresas -->
+          <div class="collapsible-section">
+            <button
+              class="collapsible-trigger sidebar-link w-full flex items-center justify-between px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 group">
+              <div class="flex items-center gap-2">
+                <i data-lucide="briefcase" class="w-4 h-4 collapsibble-menu-icons"></i>
+                <span class="truncate">Gerir Empresas</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-4 h-4 collapsibble-menu-icons dropdown-transition"></i>
+            </button>
+
+            <div class="mt-1 collapsible-content">
+              <div class="pl-4 space-y-1 border-l-2">
+                <a href="gestao-de-empresas/ver-empresas.html" class="sidebar-subitem">
+                  <i data-lucide="building2" class="w-4 h-4"></i> Ver Empresas
+                </a>
+                <a href="gestao-de-empresas/criar-empresa.html" class="sidebar-subitem">
+                  <i data-lucide="building" class="w-4 h-4"></i> Criar Empresa
                 </a>
               </div>
             </div>
@@ -100,6 +146,8 @@
       </main>
     </div>
   </div>
+
+
 
   <!-- Overlay para mobile -->
   <div id="mobile-overlay" class="fixed inset-0 z-40 hidden transition-opacity duration-300 bg-black/50 md:hidden">

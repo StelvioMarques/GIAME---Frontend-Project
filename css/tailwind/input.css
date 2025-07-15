@@ -43,3 +43,15 @@
 .bg-success {
     @apply bg-green-500 text-white hover:bg-green-600 transition;
 }
+
+.tab-btn {
+    @apply px-4 py-2 text-sm font-medium border rounded-lg transition-all duration-200;
+}
+
+.active-tab {
+    @apply bg-primary text-white border-primary;
+}
+
+.tab-btn:not(.active-tab) {
+    @apply bg-white text-gray-700 border-gray-300 hover:bg-gray-100;
+}

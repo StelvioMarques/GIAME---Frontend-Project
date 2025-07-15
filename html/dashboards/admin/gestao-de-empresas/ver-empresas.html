@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light dark" />
-  <title>Solicitações pendentes</title>
+  <title>Empresas Registradas</title>
 
   <link rel="stylesheet" href="../../../../css/tailwind/output.css">
   <link rel="stylesheet" href="../../../../css/index.css">
@@ -59,10 +59,10 @@
 
             <div class="mt-1 collapsible-content">
               <div class="pl-4 space-y-1 border-l-2">
-                <a href="solicitacoes-pendentes.html" class="sidebar-subitem">
+                <a href="../gestão de acessos/solicitacoes-pendentes.html" class="sidebar-subitem">
                   <i data-lucide="Inbox" class="w-4 h-4"></i> Solicitações pendentes
                 </a>
-                <a href="clientes-cadastrados.html" class="sidebar-subitem">
+                <a href="../gestão de acessos/clientes-cadastrados.html" class="sidebar-subitem">
                   <i data-lucide="Contact" class="w-4 h-4"></i> Clientes cadastrados
                 </a>
               </div>
@@ -105,10 +105,10 @@
 
             <div class="mt-1 collapsible-content">
               <div class="pl-4 space-y-1 border-l-2">
-                <a href="../gestao-de-empresas/ver-empresas.html" class="sidebar-subitem">
+                <a href="ver-empresas.html" class="sidebar-subitem">
                   <i data-lucide="building2" class="w-4 h-4"></i> Ver Empresas
                 </a>
-                <a href="../gestao-de-empresas/criar-empresa.html" class="sidebar-subitem">
+                <a href="criar-empresa.html" class="sidebar-subitem">
                   <i data-lucide="building" class="w-4 h-4"></i> Criar Empresa
                 </a>
               </div>
@@ -132,7 +132,28 @@
       <main class="flex-1 overflow-auto">
         <div class=" page-content">
           <h1 class="font-semibold text-transparent heading-lg bg-gradient-to-r from-primary to-secondary bg-clip-text">
-            Solicitações pendentes</h1>
+            Empresas Registradas
+          </h1>
+
+          <!-- Search + Registrar -->
+          <div class="flex flex-wrap items-center justify-between gap-2 mt-2 mb-1">
+            <!-- Search Input -->
+            <div class="relative w-full max-w-sm">
+              <span class="absolute inset-y-0 flex items-center text-gray-400 left-3">
+                <i data-lucide="search" class="w-4 h-4"></i>
+              </span>
+              <input type="text" placeholder="Pesquisar empresa..."
+                class="w-full px-10 py-2 text-sm transition-all duration-200 ease-in-out border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:outline-none" />
+            </div>
+
+            <!-- Botão Registrar -->
+            <button
+              class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition-colors rounded-lg bg-primary"
+              onclick="window.location.href='criar-empresa.html'">
+              <i data-lucide="plus" class="w-4 h-4"></i>
+              Registrar Empresa
+            </button>
+          </div>
 
           <div class="overflow-hidden bg-white border rounded-lg shadow-sm">
             <div class="overflow-x-auto">
@@ -141,14 +162,10 @@
                   <tr>
                     <th>ID</th>
                     <th>Nome</th>
-                    <th>Endereço</th>
-                    <th>Contacto</th>
                     <th>NIF</th>
-                    <th>Empresa/Particular</th>
-                    <th>E-mail</th>
-                    <th>Nº de Utilizadores</th>
-                    <th>Estado</th>
-                    <th>Senha Provisória</th>
+                    <th>Data de constituição</th>
+                    <th>Contacto</th>
+                    <th>Representante</th>
                     <th class="text-right ">Ações</th>
                   </tr>
                 </thead>
@@ -156,15 +173,11 @@
                 <tbody class="divide-y divide-gray-200">
                   <tr>
                     <td>1</td>
-                    <td>João Pedro</td>
-                    <td>Luanda, Angola</td>
-                    <td>+244 999 999 999</td>
+                    <td>João Company S.A</td>
                     <td>123456789</td>
-                    <td>Empresa</td>
-                    <td>joao@email.com</td>
-                    <td>3</td>
-                    <td class="font-semibold text-highlight">Pendente</td>
-                    <td>senha123</td>
+                    <td>21/02/2023</td>
+                    <td>+244 999 999 999</td>
+                    <td>João Silva</td>
                     <td class="pr-4 text-right">
                       <div class="relative">
                         <button
@@ -177,13 +190,13 @@
                           <div class="py-1">
                             <button
                               class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
-                              <i data-lucide="check" class="w-4 h-4"></i>
-                              Activar
+                              <i data-lucide="eye" class="w-4 h-4"></i>
+                              Visualizar
                             </button>
-                            <button onclick="window.location.href = 'editar-dados.html'"
+                            <button
                               class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
-                              <i data-lucide="edit" class="w-4 h-4"></i>
-                              Editar
+                              <i data-lucide="bar-chart-2" class="w-4 h-4"></i>
+                              Estatísticas
                             </button>
                             <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left">
                               <i data-lucide="trash2" class="w-4 h-4"></i>
@@ -197,15 +210,11 @@
 
                   <tr>
                     <td>2</td>
-                    <td>Maria Santos</td>
-                    <td>Benguela, Angola</td>
+                    <td>Maria Santos Lda</td>
+                    <td>123456789</td>
+                    <td>12/04/2021</td>
                     <td>+244 998 888 777</td>
-                    <td>987654321</td>
-                    <td>Particular</td>
-                    <td>maria@email.com</td>
-                    <td>12</td>
-                    <td class="font-semibold text-highlight">Pendente</td>
-                    <td>senha456</td>
+                    <td>Maria Silva</td>
                     <td class="pr-4 text-right">
                       <div class="relative">
                         <button
@@ -218,13 +227,13 @@
                           <div class="py-1">
                             <button
                               class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
-                              <i data-lucide="check" class="w-4 h-4"></i>
-                              Activar
+                              <i data-lucide="eye" class="w-4 h-4"></i>
+                              Visualizar
                             </button>
-                            <button onclick="window.location.href = 'editar-dados.html'"
+                            <button
                               class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
-                              <i data-lucide="edit" class="w-4 h-4"></i>
-                              Editar
+                              <i data-lucide="bar-chart-2" class="w-4 h-4"></i>
+                              Estatísticas
                             </button>
                             <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left">
                               <i data-lucide="trash2" class="w-4 h-4"></i>
@@ -238,15 +247,11 @@
 
                   <tr>
                     <td>3</td>
-                    <td>Carlos Alberto</td>
-                    <td>Huambo, Angola</td>
-                    <td>+244 922 111 222</td>
+                    <td>Carlos Alberto S.A</td>
                     <td>456789123</td>
-                    <td>Empresa</td>
-                    <td>carlos@empresa.com</td>
-                    <td>5</td>
-                    <td class="font-semibold text-highlight">Pendente</td>
-                    <td>senha789</td>
+                    <td>31/10/2018</td>
+                    <td>+244 922 111 222</td>
+                    <td>Carlos Alberto</td>
                     <td class="pr-4 text-right">
                       <div class="relative">
                         <button
@@ -259,95 +264,13 @@
                           <div class="py-1">
                             <button
                               class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
-                              <i data-lucide="check" class="w-4 h-4"></i>
-                              Activar
+                              <i data-lucide="eye" class="w-4 h-4"></i>
+                              Visualizar
                             </button>
-                            <button onclick="window.location.href = 'editar-dados.html'"
-                              class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
-                              <i data-lucide="edit" class="w-4 h-4"></i>
-                              Editar
-                            </button>
-                            <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left">
-                              <i data-lucide="trash2" class="w-4 h-4"></i>
-                              Remover
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>4</td>
-                    <td>Sara Machel</td>
-                    <td>Lubango, Angola</td>
-                    <td>+244 931 333 444</td>
-                    <td>789456123</td>
-                    <td>Particular</td>
-                    <td>sara.machel@gmail.com</td>
-                    <td>1</td>
-                    <td class="font-semibold text-highlight">Pendente</td>
-                    <td>provisorio1</td>
-                    <td class="pr-4 text-right">
-                      <div class="relative">
-                        <button
-                          class="p-1 text-gray-500 transition-colors duration-200 rounded-full hover:text-gray-700 hover:bg-gray-100"
-                          onclick="toggleDropdown(this)">
-                          <i data-lucide="more-vertical" class="w-4 h-4"></i>
-                        </button>
-
-                        <div class="hidden bg-white border border-gray-200 rounded-lg shadow-lg w-36 dropdown-menu">
-                          <div class="py-1">
                             <button
-                              class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
-                              <i data-lucide="check" class="w-4 h-4"></i>
-                              Activar
-                            </button>
-                            <button onclick="window.location.href = 'editar-dados.html'"
                               class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
-                              <i data-lucide="edit" class="w-4 h-4"></i>
-                              Editar
-                            </button>
-                            <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left">
-                              <i data-lucide="trash2" class="w-4 h-4"></i>
-                              Remover
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>5</td>
-                    <td>Joaquim Neto</td>
-                    <td>Cabinda, Angola</td>
-                    <td>+244 944 555 666</td>
-                    <td>321654987</td>
-                    <td>Empresa</td>
-                    <td>joaquim@neto.com</td>
-                    <td>7</td>
-                    <td class="font-semibold text-highlight">Pendente</td>
-                    <td>neto123</td>
-                    <td class="pr-4 text-right">
-                      <div class="relative">
-                        <button
-                          class="p-1 text-gray-500 transition-colors duration-200 rounded-full hover:text-gray-700 hover:bg-gray-100"
-                          onclick="toggleDropdown(this)">
-                          <i data-lucide="more-vertical" class="w-4 h-4"></i>
-                        </button>
-
-                        <div class="hidden bg-white border border-gray-200 rounded-lg shadow-lg w-36 dropdown-menu">
-                          <div class="py-1">
-                            <button
-                              class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
-                              <i data-lucide="check" class="w-4 h-4"></i>
-                              Activar
-                            </button>
-                            <button onclick="window.location.href = 'editar-dados.html'"
-                              class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
-                              <i data-lucide="edit" class="w-4 h-4"></i>
-                              Editar
+                              <i data-lucide="bar-chart-2" class="w-4 h-4"></i>
+                              Estatísticas
                             </button>
                             <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left">
                               <i data-lucide="trash2" class="w-4 h-4"></i>

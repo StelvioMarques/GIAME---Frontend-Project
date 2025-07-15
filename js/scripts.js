@@ -87,26 +87,6 @@ gsap.from('.pricing-card', {
 
 
 // ==========================
-// TOGGLE DE VISUALIZAÇÃO DE SENHA
-// ==========================
-const togglePassword = document.getElementById('togglePassword');
-const passwordInput = document.getElementById('password');
-
-if (togglePassword && passwordInput) {
-  togglePassword.addEventListener('click', function () {
-    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-    passwordInput.setAttribute('type', type);
-
-    const icon = this.querySelector('i');
-    if (icon) {
-      icon.setAttribute('data-lucide', type === 'password' ? 'eye' : 'eye-off');
-      lucide.createIcons();
-    }
-  });
-}
-
-
-// ==========================
 // FORMULÁRIO DE REGISTRO
 // ==========================
 const registerForm = document.getElementById('registerForm');
@@ -290,4 +270,107 @@ document.querySelectorAll('aside a').forEach(link => {
       toggleSidebar();
     }
   });
+});
+
+
+// ==========================
+// MENU DROPDOWN FLUTUANTE (Tables)
+// ==========================
+
+// Função para controlar o dropdown
+function toggleDropdown(button) {
+  const allDropdowns = document.querySelectorAll('.dropdown-menu');
+
+  // Fecha todos os outros dropdowns
+  allDropdowns.forEach(menu => {
+    menu.classList.add('hidden');
+  });
+
+  // Encontra o dropdown correspondente
+  const dropdown = button.nextElementSibling;
+
+  if (dropdown.classList.contains('hidden')) {
+    // Calcula a posição do botão
+    const buttonRect = button.getBoundingClientRect();
+
+    // Posiciona o dropdown
+    dropdown.style.position = 'fixed';
+    dropdown.style.top = (buttonRect.bottom + 4) + 'px';
+    dropdown.style.right = (window.innerWidth - buttonRect.right) + 'px';
+    dropdown.style.zIndex = '9999';
+
+    // Mostra o dropdown
+    dropdown.classList.remove('hidden');
+  } else {
+    dropdown.classList.add('hidden');
+  }
+}
+
+// Fecha dropdown ao clicar fora
+document.addEventListener('click', function (event) {
+  const dropdowns = document.querySelectorAll('.dropdown-menu');
+  const buttons = document.querySelectorAll('button[onclick*="toggleDropdown"]');
+
+  let clickedButton = false;
+  buttons.forEach(button => {
+    if (button.contains(event.target)) {
+      clickedButton = true;
+    }
+  });
+
+  if (!clickedButton) {
+    dropdowns.forEach(dropdown => {
+      dropdown.classList.add('hidden');
+    });
+  }
+});
+
+// Reposiciona dropdowns ao redimensionar a janela
+window.addEventListener('resize', function () {
+  const dropdowns = document.querySelectorAll('.dropdown-menu');
+  dropdowns.forEach(dropdown => {
+    dropdown.classList.add('hidden');
+  });
+});
+
+// ==========================
+// TOGGLE DE VISUALIZAÇÃO DE SENHA
+// ==========================
+function togglePassword() {
+  const input = document.getElementById('password');
+  const icon = document.getElementById('eyeIcon');
+
+  if (input.type === 'password') {
+    input.type = 'text';
+    icon.setAttribute('data-lucide', 'eye');
+  } else {
+    input.type = 'password';
+    icon.setAttribute('data-lucide', 'eye-off');
+  }
+
+  // Atualiza o ícone (re-renderiza)
+  lucide.createIcons();
+}
+
+// ==========================
+// TABS
+// ==========================
+function showTab(tab) {
+  const tabs = ['pendentes', 'aprovados'];
+  tabs.forEach(t => {
+    document.getElementById(`tab-${t}`).classList.remove('bg-primary', 'text-white');
+    document.getElementById(`tab-${t}`).classList.add('text-gray-700', 'hover:bg-gray-100');
+    document.getElementById(`content-${t}`).classList.add('hidden');
+  });
+
+  document.getElementById(`tab-${tab}`).classList.add('bg-primary', 'text-white');
+  document.getElementById(`tab-${tab}`).classList.remove('text-gray-700', 'hover:bg-gray-100');
+  document.getElementById(`content-${tab}`).classList.remove('hidden');
+}
+
+// ==========================
+// MICROMODAL
+// ==========================
+document.addEventListener('DOMContentLoaded', () => {
+  MicroModal.init();
 });
