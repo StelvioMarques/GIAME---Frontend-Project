@@ -12,7 +12,8 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <!-- PRELOAD: conexão antecipada com o servidor das fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -87,7 +88,7 @@
                   <i data-lucide="users" class="w-4 h-4"></i> Ver Utilizadores
                 </a>
                 <a href="gestao-de-usuarios/criar-usuario.html" class="sidebar-subitem">
-                  <i data-lucide="user-plus" class="w-4 h-4"></i> Criar Utilizador
+                  <i data-lucide="plus" class="w-4 h-4"></i> Criar Utilizador
                 </a>
               </div>
             </div>
@@ -110,7 +111,56 @@
                   <i data-lucide="building2" class="w-4 h-4"></i> Ver Empresas
                 </a>
                 <a href="gestao-de-empresas/criar-empresa.html" class="sidebar-subitem">
-                  <i data-lucide="building" class="w-4 h-4"></i> Criar Empresa
+                  <i data-lucide="plus" class="w-4 h-4"></i> Criar Empresa
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Seção: Plano Geral Contas -->
+          <div class="collapsible-section">
+            <button
+              class="collapsible-trigger sidebar-link w-full flex items-center justify-between px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 group">
+              <div class="flex items-center gap-2">
+                <i data-lucide="list" class="w-4 h-4 collapsibble-menu-icons"></i>
+                <span class="truncate">Plano Geral Contas</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-4 h-4 collapsibble-menu-icons dropdown-transition"></i>
+            </button>
+
+            <div class="mt-1 collapsible-content">
+              <div class="pl-4 space-y-1 border-l-2">
+                <a href="PGC/ver-contas.html" class="sidebar-subitem">
+                  <i data-lucide="list" class="w-4 h-4"></i> Ver Contas
+                </a>
+                <a href="PGC/criar-conta.html" class="sidebar-subitem">
+                  <i data-lucide="plus" class="w-4 h-4"></i> Criar Conta
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Seção: Lançamentos -->
+          <div class="collapsible-section">
+            <button
+              class="collapsible-trigger sidebar-link w-full flex items-center justify-between px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 group">
+              <div class="flex items-center gap-2">
+                <i data-lucide="calendar" class="w-4 h-4 collapsibble-menu-icons"></i>
+                <span class="truncate">Diário Lançamentos</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-4 h-4 collapsibble-menu-icons dropdown-transition"></i>
+            </button>
+
+            <div class="mt-1 collapsible-content">
+              <div class="pl-4 space-y-1 border-l-2">
+                <a href="../lancamentos/ver-lancamentos.html" class="sidebar-subitem">
+                  <i data-lucide="list" class="w-4 h-4"></i> Ver Lançamentos
+                </a>
+                <a href="../lancamentos/criar-lancamentos.html" class="sidebar-subitem">
+                  <i data-lucide="plus" class="w-4 h-4"></i> Adicionar Lançamentos
+                </a>
+                <a href="../lancamentos/diario-consulta.html" class="sidebar-subitem">
+                  <i data-lucide="calendar-search" class="w-4 h-4"></i> Diário de consulta
                 </a>
               </div>
             </div>
@@ -130,31 +180,161 @@
       </header>
 
       <!-- Conteúdo -->
-      <main class="flex-1 overflow-auto">
-        <div class="page-content">
-          <h1 class="heading-lg">Bem-vindo ao GIAME</h1>
-          <p class="paragraph">
-            Começa tua gestão aqui mesmo! Simplifica os processos e mantém o foco no que importa.
-          </p>
+      <main class="flex-1 overflow-auto bg-gray-50">
+        <div class="mx-auto space-y-4 page-content">
 
-          <h2 class="heading-sm">Seus próximos passos</h2>
-          <p class="text-muted">
-            Explore os módulos do sistema no menu lateral e personalize a experiência. Lorem ipsum dolor sit amet
-            consectetur, adipisicing elit. Exercitationem et non laudantium accusamus velit, eaque explicabo delectus
-            minus necessitatibus ipsam cum, quia eos rerum? Porro laboriosam qui dolorum similique repellat?
-          </p>
+          <!-- Saudações -->
+          <div>
+            <h1 class="text-2xl font-semibold ">Olá, Usuário</h1>
+            <p class="text-sm text-gray-500">Aqui está o resumo da sua plataforma contábil.</p>
+          </div>
+
+          <!-- Cards-->
+          <section class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
+            <!-- Empresas-->
+            <div class="p-6 transition-all bg-white border border-gray-200 shadow-sm rounded-2xl hover:shadow-md group">
+              <div class="flex items-center justify-between mb-4">
+                <div
+                  class="bg-primary/10 text-primary group-hover:text-highlight p-2.5 rounded-xl group-hover:scale-105 transition">
+                  <i data-lucide="building2" class="w-5 h-5"></i>
+                </div>
+                <a href="gestao-de-empresas/ver-empresas.html"
+                  class="flex items-center gap-1 text-sm text-gray-400 transition hover:text-secondary">
+                  Ver <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+              <p class="text-gray-500">Empresas Cadastradas</p>
+              <h2 class="mt-1 text-2xl font-semibold leading-tight text-secondary">3</h2>
+              <p class="text-[12px] text-gray-400 mt-1">Atualizado hoje</p>
+            </div>
+
+            <!-- Sócios -->
+            <div class="p-6 transition-all bg-white border border-gray-200 shadow-sm rounded-2xl hover:shadow-md group">
+              <div class="flex items-center justify-between mb-4">
+                <div
+                  class="bg-primary/10 text-primary group-hover:text-highlight p-2.5 rounded-xl group-hover:scale-105 transition">
+                  <i data-lucide="users" class="w-5 h-5"></i>
+                </div>
+                <a href="#" class="flex items-center gap-1 text-sm text-gray-400 transition hover:text-secondary">
+                  Ver <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+              <p class="text-gray-500 ">Sócios Adicionados</p>
+              <h2 class="mt-1 text-2xl font-semibold leading-tight text-secondary">35</h2>
+              <p class="text-[12px] text-gray-400 mt-1">Atualizado há 1h</p>
+            </div>
+
+            <!-- Lançamentos -->
+            <div class="p-6 transition-all bg-white border border-gray-200 shadow-sm rounded-2xl hover:shadow-md group">
+              <div class="flex items-center justify-between mb-4">
+                <div
+                  class="bg-primary/10 text-primary group-hover:text-highlight p-2.5 rounded-xl group-hover:scale-105 transition">
+                  <i data-lucide="calendar" class="w-5 h-5"></i>
+                </div>
+                <a href="lancamentos/ver-lancamentos.html"
+                  class="flex items-center gap-1 text-sm text-gray-400 transition hover:text-secondary">
+                  Ver <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+              <p class="text-gray-500 ">Lançamentos Contábeis</p>
+              <h2 class="mt-1 text-2xl font-semibold leading-tight text-secondary">342</h2>
+              <p class="text-[12px] text-gray-400 mt-1">Atualizado hoje</p>
+            </div>
+
+            <!-- PGC -->
+            <div class="p-6 transition-all bg-white border border-gray-200 shadow-sm rounded-2xl hover:shadow-md group">
+              <div class="flex items-center justify-between mb-4">
+                <div
+                  class="bg-primary/10 text-primary group-hover:text-highlight p-2.5 rounded-xl group-hover:scale-105 transition">
+                  <i data-lucide="book" class="w-5 h-5"></i>
+                </div>
+                <a href="PGC/ver-contas.html"
+                  class="flex items-center gap-1 p-1 text-sm text-gray-400 transition rounded-lg hover:bg-gray-50 hover:text-secondary">
+                  Ver <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+              <p class="text-gray-500">Contas Criadas (PGC)</p>
+              <h2 class="mt-1 text-2xl font-semibold leading-tight text-secondary">148</h2>
+              <p class="text-[12px] text-gray-400 mt-1">Atualizado ontem</p>
+            </div>
+          </section>
+
+          <!-- Ações Rápidas -->
+          <section class="mt-8">
+            <h3 class="mb-4 text-lg font-semibold text-gray-700">Ações Rápidas</h3>
+            <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+
+              <!-- Nova Empresa -->
+              <a href="gestao-de-empresas/criar-empresa.html"
+                class="flex flex-col items-center justify-center gap-2 p-4 transition bg-white border border-gray-200 shadow-sm rounded-xl hover:bg-gray-50 group">
+                <div class="p-2 transition-all rounded-lg bg-primary/10 text-primary group-hover:text-highlight">
+                  <i data-lucide="building2" class="w-5 h-5"></i>
+                </div>
+                <p class="text-sm text-gray-700">Nova Empresa</p>
+              </a>
+
+              <!-- Novo Lançamento -->
+              <a href="lancamentos/criar-lancamentos.html"
+                class="flex flex-col items-center justify-center gap-2 p-4 transition bg-white border border-gray-200 shadow-sm rounded-xl hover:bg-gray-50 group">
+                <div class="p-2 transition-all rounded-lg bg-primary/10 text-primary group-hover:text-highlight">
+                  <i data-lucide="file-text" class="w-5 h-5"></i>
+                </div>
+                <p class="text-sm text-gray-700">Novo Lançamento</p>
+              </a>
+
+              <!-- Nova Conta -->
+              <a href="PGC/criar-conta.html"
+                class="flex flex-col items-center justify-center gap-2 p-4 transition bg-white border border-gray-200 shadow-sm rounded-xl hover:bg-gray-50 group">
+                <div class="p-2 transition-all rounded-lg bg-primary/10 text-primary group-hover:text-highlight">
+                  <i data-lucide="book" class="w-5 h-5"></i>
+                </div>
+                <p class="text-sm text-gray-700">Nova Conta (PGC)</p>
+              </a>
+
+              <!-- Gerir Utilizadores -->
+              <a href="gestão de acessos/solicitacoes-pendentes.html"
+                class="flex flex-col items-center justify-center gap-2 p-4 transition bg-white border border-gray-200 shadow-sm rounded-xl hover:bg-gray-50 group">
+                <div class="p-2 transition-all rounded-lg bg-primary/10 text-primary group-hover:text-highlight">
+                  <i data-lucide="users" class="w-5 h-5"></i>
+                </div>
+                <p class="text-sm text-gray-700">Gerir Acessos</p>
+              </a>
+
+            </div>
+          </section>
+
+          <!-- Gráficos -->
+          <section class="mt-8">
+            <h3 class="mb-4 text-lg font-semibold text-gray-700">Visão Geral</h3>
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <!-- Distribuição de Contas -->
+              <div class="p-4 bg-white border border-gray-200 shadow-sm rounded-xl">
+                <p class="mb-2 text-sm text-gray-600">Distribuição de Contas (PGC)</p>
+                <div class="relative h-[300px]">
+                  <canvas id="graficoContas" class="!h-full !w-full"></canvas>
+                </div>
+              </div>
+
+              <!-- Lançamentos por Mês -->
+              <div class="p-4 bg-white border border-gray-200 shadow-sm rounded-xl">
+                <p class="mb-2 text-sm text-gray-600">Lançamentos por Mês</p>
+                <div class="relative h-[300px]">
+                  <canvas id="graficoLancamentos" class="!h-full !w-full"></canvas>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </main>
     </div>
   </div>
-
-
 
   <!-- Overlay para mobile -->
   <div id="mobile-overlay" class="fixed inset-0 z-40 hidden transition-opacity duration-300 bg-black/50 md:hidden">
   </div>
 
   <script src="../../../js/scripts.js"></script>
+  <script src="../../../js/graphics.js"></script>
 </body>
 
 </html>

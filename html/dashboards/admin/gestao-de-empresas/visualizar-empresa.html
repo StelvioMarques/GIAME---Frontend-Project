@@ -86,7 +86,7 @@
                   <i data-lucide="users" class="w-4 h-4"></i> Ver Utilizadores
                 </a>
                 <a href="../gestao-de-usuarios/criar-usuario.html" class="sidebar-subitem">
-                  <i data-lucide="user-plus" class="w-4 h-4"></i> Criar Utilizador
+                  <i data-lucide="plus" class="w-4 h-4"></i> Criar Utilizador
                 </a>
               </div>
             </div>
@@ -109,7 +109,56 @@
                   <i data-lucide="building2" class="w-4 h-4"></i> Ver Empresas
                 </a>
                 <a href="criar-empresa.html" class="sidebar-subitem">
-                  <i data-lucide="building" class="w-4 h-4"></i> Criar Empresa
+                  <i data-lucide="plus" class="w-4 h-4"></i> Criar Empresa
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Seção: Plano Geral Contas -->
+          <div class="collapsible-section">
+            <button
+              class="collapsible-trigger sidebar-link w-full flex items-center justify-between px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 group">
+              <div class="flex items-center gap-2">
+                <i data-lucide="list" class="w-4 h-4 collapsibble-menu-icons"></i>
+                <span class="truncate">Plano Geral Contas</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-4 h-4 collapsibble-menu-icons dropdown-transition"></i>
+            </button>
+
+            <div class="mt-1 collapsible-content">
+              <div class="pl-4 space-y-1 border-l-2">
+                <a href="../PGC/ver-contas.html" class="sidebar-subitem">
+                  <i data-lucide="list" class="w-4 h-4"></i> Ver Contas
+                </a>
+                <a href="../PGC/criar-conta.html" class="sidebar-subitem">
+                  <i data-lucide="plus" class="w-4 h-4"></i> Criar Conta
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Seção: Lançamentos -->
+          <div class="collapsible-section">
+            <button
+              class="collapsible-trigger sidebar-link w-full flex items-center justify-between px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 group">
+              <div class="flex items-center gap-2">
+                <i data-lucide="calendar" class="w-4 h-4 collapsibble-menu-icons"></i>
+                <span class="truncate">Diário Lançamentos</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-4 h-4 collapsibble-menu-icons dropdown-transition"></i>
+            </button>
+
+            <div class="mt-1 collapsible-content">
+              <div class="pl-4 space-y-1 border-l-2">
+                <a href="../lancamentos/ver-lancamentos.html" class="sidebar-subitem">
+                  <i data-lucide="list" class="w-4 h-4"></i> Ver Lançamentos
+                </a>
+                <a href="../lancamentos/criar-lancamentos.html" class="sidebar-subitem">
+                  <i data-lucide="plus" class="w-4 h-4"></i> Adicionar Lançamentos
+                </a>
+                <a href="../lancamentos/diario-consulta.html" class="sidebar-subitem">
+                  <i data-lucide="calendar-search" class="w-4 h-4"></i> Diário de consulta
                 </a>
               </div>
             </div>
@@ -131,9 +180,8 @@
       <main class="flex-1 p-6 overflow-y-auto">
         <div class="page-content">
           <!-- Capa -->
-          <section class="flex items-center gap-6 p-6 bg-white border rounded-lg shadow">
-            <div
-              class="flex items-center justify-center text-2xl rounded-full text-primary">
+          <section class="flex items-center gap-6 p-6 bg-white border rounded-lg">
+            <div class="flex items-center justify-center text-2xl rounded-full text-primary">
               <i data-lucide="building2" class="w-12 h-12"></i>
             </div>
             <div class="flex-1">
@@ -185,41 +233,56 @@
             </div>
           </section>
 
-          <!-- Sócios -->
-          <section class="p-6 bg-white border rounded-lg shadow">
-            <h3 class="mb-4 text-lg font-semibold">Sócios</h3>
-            <ul class="divide-y divide-gray-200">
-              <li class="flex items-start gap-4 py-3">
-                <div class="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full">
-                  <i data-lucide="user" class="w-4 h-4 text-gray-600"></i>
+          <!-- Sócios: Cards -->
+          <section class="space-y-4">
+            <h3 class="text-lg font-semibold text-gray-800">Sócios</h3>
+
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+              <!-- Card 1 -->
+              <div class="p-4 transition bg-white border rounded-lg hover:shadow-sm">
+                <div class="flex items-center gap-3">
+                  <div class="p-2 rounded-md bg-gray-50">
+                    <i data-lucide="user" class="w-5 h-5 text-gray-600"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-gray-900">Pedro Manuel</p>
+                    <p class="text-xs text-gray-500">+244 926 111 222</p>
+                  </div>
                 </div>
-                <div>
-                  <p class="font-medium text-gray-800">Pedro Manuel</p>
-                  <p class="text-sm text-gray-500">+244 926 111 222</p>
-                  <p class="text-sm text-gray-500">Participação: 5.000.000 KZ</p>
+                <div class="mt-2 text-xs text-gray-500">
+                  Participação: <span class="font-medium text-gray-700">5.000.000 KZ</span>
                 </div>
-              </li>
-              
-              <li class="flex items-start gap-4 py-3">
-                <div class="flex items-center justify-center w-10 h-10 bg-gray-100 rounded-full">
-                  <i data-lucide="user" class="w-4 h-4 text-gray-600"></i>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="p-4 transition bg-white border rounded-lg hover:shadow-sm">
+                <div class="flex items-center gap-3">
+                  <div class="p-2 rounded-md bg-gray-50">
+                    <i data-lucide="user" class="w-5 h-5 text-gray-600"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm font-medium text-gray-900">Maria dos Anjos</p>
+                    <p class="text-xs text-gray-500">+244 929 333 444</p>
+                  </div>
                 </div>
-                <div>
-                  <p class="font-medium text-gray-800">Maria dos Anjos</p>
-                  <p class="text-sm text-gray-500">+244 929 333 444</p>
-                  <p class="text-sm text-gray-500">Participação: 5.000.000 KZ</p>
+                <div class="mt-2 text-xs text-gray-500">
+                  Participação: <span class="font-medium text-gray-700">5.000.000 KZ</span>
                 </div>
-              </li>
-            </ul>
+              </div>
+
+              <!-- Adicione mais cards aqui se precisar -->
+            </div>
           </section>
 
           <!-- Botões -->
           <section class="flex justify-end gap-3">
-            <a href="ver-empresas.html" class="px-4 py-2 text-sm text-gray-600 border rounded hover:bg-gray-100">
+            <a href="ver-empresas.html"
+              class="px-4 py-2 text-sm font-medium text-gray-700 transition-all duration-200 border border-gray-200 rounded-lg tab-button hover:bg-gray-100">
               Voltar
             </a>
 
-            <button class="px-4 py-2 text-sm text-white rounded bg-primary hover:bg-opacity-90">
+            <button onclick="window.location.href = 'editar-empresa.html'"
+              class="px-4 py-2 text-sm text-white rounded-lg bg-primary hover:bg-opacity-90">
               Editar Empresa
             </button>
           </section>

@@ -1,6 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./html/**/*.html"],
+  content: [
+    "./html/**/*.html",
+    "./*.html",
+  ],
+  safelist: [
+    'bg-gradient-to-r',
+    'from-primary',
+    'to-secondary',
+    'text-transparent',
+    'bg-clip-text'
+  ],
   theme: {
     extend: {
       colors: {

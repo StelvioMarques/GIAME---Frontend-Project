@@ -5,15 +5,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light dark" />
-  <title>Editar Empresa</title>
+  <title>Lançamentos</title>
 
   <link rel="stylesheet" href="../../../../css/tailwind/output.css">
   <link rel="stylesheet" href="../../../../css/index.css">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <!-- PRELOAD: conexão antecipada com o servidor das fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -107,10 +106,10 @@
 
             <div class="mt-1 collapsible-content">
               <div class="pl-4 space-y-1 border-l-2">
-                <a href="ver-empresas.html" class="sidebar-subitem">
+                <a href="../gestao-de-empresas/ver-empresas.html" class="sidebar-subitem">
                   <i data-lucide="building2" class="w-4 h-4"></i> Ver Empresas
                 </a>
-                <a href="criar-empresa.html" class="sidebar-subitem">
+                <a href="../gestao-de-empresas/criar-empresa.html" class="sidebar-subitem">
                   <i data-lucide="plus" class="w-4 h-4"></i> Criar Empresa
                 </a>
               </div>
@@ -153,13 +152,13 @@
 
             <div class="mt-1 collapsible-content">
               <div class="pl-4 space-y-1 border-l-2">
-                <a href="../lancamentos/ver-lancamentos.html" class="sidebar-subitem">
+                <a href="ver-lancamentos.html" class="sidebar-subitem">
                   <i data-lucide="list" class="w-4 h-4"></i> Ver Lançamentos
                 </a>
-                <a href="../lancamentos/criar-lancamentos.html" class="sidebar-subitem">
+                <a href="criar-lancamentos.html" class="sidebar-subitem">
                   <i data-lucide="plus" class="w-4 h-4"></i> Adicionar Lançamentos
                 </a>
-                <a href="../lancamentos/diario-consulta.html" class="sidebar-subitem">
+                <a href="diario-consulta.html" class="sidebar-subitem">
                   <i data-lucide="calendar-search" class="w-4 h-4"></i> Diário de consulta
                 </a>
               </div>
@@ -181,120 +180,111 @@
 
       <!-- Conteúdo -->
       <main class="flex-1 overflow-auto">
-        <div class="page-content">
-          <h1
-            class="mx-auto mt-6 text-3xl font-semibold text-center text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text">
-            Editar Empresa
+        <div class=" page-content">
+          <h1 class="text-3xl font-semibold text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text">
+            Lançamentos
           </h1>
 
-          <p class="text-sm text-center text-gray-600 ">
-            Preenche os dados abaixo para editar esta empresa no sistema.
-          </p>
+          <!-- Search + Registrar -->
+          <div class="flex flex-wrap items-center justify-between gap-2 mt-2 mb-1">
+            <!-- Search Input -->
+            <div class="relative w-full max-w-sm">
+              <span class="absolute inset-y-0 flex items-center text-gray-400 left-3">
+                <i data-lucide="search" class="w-4 h-4"></i>
+              </span>
+              <input type="text" placeholder="Pesquisar por NIF..."
+                class="w-full px-10 py-2 text-sm transition-all duration-200 ease-in-out border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:outline-none" />
+            </div>
 
-          <div class="flex justify-center px-4">
-            <div class="w-full max-w-3xl p-10 bg-white border rounded-xl">
-              <form class="w-full gap-6 form-grid form-col-2">
-                <!-- Nome da empresa -->
-                <div class="form-full">
-                  <label for="name" class="label">
-                    Nome <span class="text-red-500">*</span>
-                  </label>
-                  <input type="text" id="name" name="name" required placeholder="João da Silva S.A" class="input"
-                    value="João da Silva Lda" />
-                </div>
+            <!-- Botão Registrar -->
+            <button
+              class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition-colors rounded-lg bg-primary"
+              onclick="window.location.href='criar-lancamentos.html'">
+              <i data-lucide="plus" class="w-4 h-4"></i>
+              Novo Lançamento
+            </button>
+          </div>
 
-                <!-- Endereço -->
-                <div class="form-full">
-                  <label for="address" class="label">
-                    Endereço <span class="text-red-500">*</span>
-                  </label>
-                  <input type="text" id="address" name="address" required placeholder="Rua 12, Bairro Azul, Luanda"
-                    class="input" value="Maculusso, Luanda" />
-                </div>
+          <div class="overflow-hidden bg-white border rounded-lg shadow-sm">
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm text-left text-gray-700 ">
+                <thead class="">
+                  <tr>
+                    <th>NIF Empresa</th>
+                    <th>Nome Empresa</th>
+                    <th>Nº do Lançamento</th>
+                    <th>Ano de Análise</th>
+                    <th>Total Débito</th>
+                    <th>Total Crédito</th>
+                    <th>Estado</th>
+                    <th>Criado Por</th>
+                    <th>Criado em</th>
+                    <th class="text-right ">Ações</th>
+                  </tr>
+                </thead>
 
-                <!-- Contacto -->
-                <div>
-                  <label for="contact" class="label">
-                    Contacto <span class="text-red-500">*</span>
-                  </label>
-                  <input type="text" id="contact" name="contact" required placeholder="+244 923 456 789"
-                    pattern="\+244 \d{3} \d{3} \d{3}" title="Formato esperado: +244 XXX XXX XXX" class="input"
-                    value="+244 933 555 032" />
-                </div>
+                <tbody class="divide-y divide-gray-200">
+                  <tr>
+                    <td>12345678</td>
+                    <td>João Company S.A</td>
+                    <td>1</td>
+                    <td>2023</td>
+                    <td>1.000</td>
+                    <td>1.000</td>
+                    <td>Aberto</td>
+                    <td>João Silva</td>
+                    <td>12/04/2023</td>
+                    <td class="pr-4 text-right">
+                      <button
+                        class="p-1 text-gray-500 transition-colors duration-200 rounded-full hover:text-gray-700 hover:bg-gray-100 btn-acao"
+                        data-tipo="apagar" data-msg="Tem certeza que quer remover esta lançamento?"
+                        data-title="Remover Lançamento">
+                        <i data-lucide="trash2" class="w-4 h-4"></i>
+                      </button>
+                    </td>
+                  </tr>
 
-                <!-- NIF -->
-                <div>
-                  <label for="nif" class="label">
-                    NIF <span class="text-red-500">*</span>
-                  </label>
-                  <input type="text" id="nif" name="nif" required placeholder="Insira o NIF" class="input"
-                    value="2222222222" />
-                </div>
+                  <tr>
+                    <td>12345678</td>
+                    <td>João Company S.A</td>
+                    <td>1</td>
+                    <td>2023</td>
+                    <td>1.000</td>
+                    <td>1.000</td>
+                    <td>Aberto</td>
+                    <td>João Silva</td>
+                    <td>12/04/2023</td>
+                    <td class="pr-4 text-right">
+                      <button
+                        class="p-1 text-gray-500 transition-colors duration-200 rounded-full hover:text-gray-700 hover:bg-gray-100 btn-acao"
+                        data-tipo="apagar" data-msg="Tem certeza que quer remover esta lançamento?"
+                        data-title="Remover Lançamento">
+                        <i data-lucide="trash2" class="w-4 h-4"></i>
+                      </button>
+                    </td>
+                  </tr>
 
-                <!-- Email -->
-                <div class="form-full">
-                  <label for="email" class="label">
-                    Email <span class="text-red-500">*</span>
-                  </label>
-                  <input type="email" id="email" name="email" required placeholder="email@exemplo.com" class="input"
-                    value="joao.company@gmail.com" />
-                </div>
-
-                <!-- Objecto social -->
-                <div class="form-full">
-                  <label for="objecto-social" class="label">
-                    Objecto Social <span class="text-red-500">*</span>
-                  </label>
-                  <input type="text" id="objecto-social" name="objecto-social" required
-                    placeholder="Insira o objecto social" class="input" value="SPA" />
-                </div>
-
-                <!-- Data de constituicao -->
-                <div>
-                  <label for="data-de-constituicao" class="label">
-                    Data de constituição <span class="text-red-500">*</span>
-                  </label>
-                  <input type="date" id="data-de-constituicao" name="data-de-constituicao" required class="input" />
-                </div>
-
-                <!-- Capital social -->
-                <div>
-                  <label for="capital-social" class="label">
-                    Capital Social <span class="text-red-500">*</span>
-                  </label>
-                  <input type="number" step="1000" id="capital-social" name="capital-social" required
-                    placeholder="Insira o capital social" class="input" value="1000000" />
-                </div>
-
-                <!-- Representante -->
-                <div class="form-full">
-                  <label for="representante" class="label">
-                    Representante Legal <span class="text-red-500">*</span>
-                  </label>
-                  <input type="text" id="representante" name="representante" required placeholder="João da Silva"
-                    class="input" value="João da Silva" />
-                </div>
-
-                <!-- Add sócios -->
-                <div class="form-full">
-                  <label class="label">
-                    Sócios <span class="text-red-500">*</span>
-                  </label>
-
-                  <button type="button" data-micromodal-trigger="modal-socios"
-                    class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium text-gray-700 transition-all border border-gray-200 rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
-                    <span>Adicionar Sócios</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
-                  </button>
-                </div>
-
-                <!-- Botão de Actualizar -->
-                <div class="mt-2 form-full">
-                  <button type="submit" class="btn bg-primary" onclick="window.location.href='ver-empresas.html'">
-                    Actualizar Empresa
-                  </button>
-                </div>
-              </form>
+                  <tr>
+                    <td>12345678</td>
+                    <td>João Company S.A</td>
+                    <td>1</td>
+                    <td>2023</td>
+                    <td>1.000</td>
+                    <td>1.000</td>
+                    <td>Aberto</td>
+                    <td>João Silva</td>
+                    <td>12/04/2023</td>
+                    <td class="pr-4 text-right">
+                      <button
+                        class="p-1 text-gray-500 transition-colors duration-200 rounded-full hover:text-gray-700 hover:bg-gray-100 btn-acao"
+                        data-tipo="apagar" data-msg="Tem certeza que quer remover esta lançamento?"
+                        data-title="Remover Lançamento">
+                        <i data-lucide="trash2" class="w-4 h-4"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
@@ -304,63 +294,6 @@
 
   <!-- Overlay para mobile -->
   <div id="mobile-overlay" class="fixed inset-0 z-40 hidden transition-opacity duration-300 bg-black/50 md:hidden">
-  </div>
-
-  <!-- Modal de Adicionar Sócios -->
-  <div class="modal micromodal-slide" id="modal-socios" aria-hidden="true">
-    <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50" tabindex="-1"
-      data-micromodal-close>
-      <div class="relative w-full max-w-lg p-6 bg-white rounded-lg shadow-xl animate-fade-in" role="dialog"
-        aria-modal="true" aria-labelledby="modal-socios-title">
-        <header class="flex items-center justify-between mb-4">
-          <h2 class="text-lg font-bold text-secondary" id="modal-socios-title">
-            Adicionar Sócio
-          </h2>
-          <button class="text-gray-500 hover:text-gray-700" aria-label="Fechar modal" data-micromodal-close>
-            <i data-lucide="x" class="w-5 h-5"></i>
-          </button>
-        </header>
-
-        <div class="space-y-4 text-sm text-gray-800" id="modal-socios-content">
-          <!-- Nome -->
-          <div>
-            <label for="socio-nome" class="label">
-              Nome do Sócio <span class="text-red-500">*</span>
-            </label>
-            <input type="text" id="socio-nome" name="socio_nome" placeholder="Ex: Pedro Manuel" class="input" />
-          </div>
-
-          <!-- Contacto -->
-          <div>
-            <label for="socio-contacto" class="label">
-              Contacto <span class="text-red-500">*</span>
-            </label>
-            <input type="text" id="socio-contacto" name="socio_contacto" placeholder="+244 923 456 789" class="input" />
-          </div>
-
-          <!-- Participação -->
-          <div>
-            <label for="socio-participacao" class="label">
-              Participação (KZ) <span class="text-red-500">*</span>
-            </label>
-            <input type="number" step="1000" id="socio-participacao" name="socio_participacao"
-              placeholder="Insira o valor da participação" class="input" />
-          </div>
-        </div>
-
-        <footer class="flex justify-end gap-2 mt-6">
-          <button
-            class="w-full py-2 text-sm font-medium text-gray-700 transition-all duration-200 border border-gray-200 rounded-lg hover:bg-gray-100"
-            data-micromodal-close>
-            Cancelar
-          </button>
-
-          <button type="button" class="text-white btn bg-primary">
-            Adicionar Sócio
-          </button>
-        </footer>
-      </div>
-    </div>
   </div>
 
   <script src="../../../../js/scripts.js"></script>

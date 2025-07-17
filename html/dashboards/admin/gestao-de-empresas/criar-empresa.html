@@ -13,7 +13,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
-   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
   <!-- PRELOAD: conexão antecipada com o servidor das fontes -->
@@ -89,7 +89,7 @@
                   <i data-lucide="users" class="w-4 h-4"></i> Ver Utilizadores
                 </a>
                 <a href="../gestao-de-usuarios/criar-usuario.html" class="sidebar-subitem">
-                  <i data-lucide="user-plus" class="w-4 h-4"></i> Criar Utilizador
+                  <i data-lucide="plus" class="w-4 h-4"></i> Criar Utilizador
                 </a>
               </div>
             </div>
@@ -112,7 +112,56 @@
                   <i data-lucide="building2" class="w-4 h-4"></i> Ver Empresas
                 </a>
                 <a href="criar-empresa.html" class="sidebar-subitem">
-                  <i data-lucide="building" class="w-4 h-4"></i> Criar Empresa
+                  <i data-lucide="plus" class="w-4 h-4"></i> Criar Empresa
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Seção: Plano Geral Contas -->
+          <div class="collapsible-section">
+            <button
+              class="collapsible-trigger sidebar-link w-full flex items-center justify-between px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 group">
+              <div class="flex items-center gap-2">
+                <i data-lucide="list" class="w-4 h-4 collapsibble-menu-icons"></i>
+                <span class="truncate">Plano Geral Contas</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-4 h-4 collapsibble-menu-icons dropdown-transition"></i>
+            </button>
+
+            <div class="mt-1 collapsible-content">
+              <div class="pl-4 space-y-1 border-l-2">
+                <a href="../PGC/ver-contas.html" class="sidebar-subitem">
+                  <i data-lucide="list" class="w-4 h-4"></i> Ver Contas
+                </a>
+                <a href="../PGC/criar-conta.html" class="sidebar-subitem">
+                  <i data-lucide="plus" class="w-4 h-4"></i> Criar Conta
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Seção: Lançamentos -->
+          <div class="collapsible-section">
+            <button
+              class="collapsible-trigger sidebar-link w-full flex items-center justify-between px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 group">
+              <div class="flex items-center gap-2">
+                <i data-lucide="calendar" class="w-4 h-4 collapsibble-menu-icons"></i>
+                <span class="truncate">Diário Lançamentos</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-4 h-4 collapsibble-menu-icons dropdown-transition"></i>
+            </button>
+
+            <div class="mt-1 collapsible-content">
+              <div class="pl-4 space-y-1 border-l-2">
+                <a href="../lancamentos/ver-lancamentos.html" class="sidebar-subitem">
+                  <i data-lucide="list" class="w-4 h-4"></i> Ver Lançamentos
+                </a>
+                <a href="../lancamentos/criar-lancamentos.html" class="sidebar-subitem">
+                  <i data-lucide="plus" class="w-4 h-4"></i> Adicionar Lançamentos
+                </a>
+                <a href="../lancamentos/diario-consulta.html" class="sidebar-subitem">
+                  <i data-lucide="calendar-search" class="w-4 h-4"></i> Diário de consulta
                 </a>
               </div>
             </div>
@@ -135,7 +184,7 @@
       <main class="flex-1 overflow-auto">
         <div class="page-content">
           <h1
-            class="mx-auto mt-6 font-semibold text-center text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text">
+            class="mx-auto mt-6 text-3xl font-semibold text-center text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text">
             Nova Empresa
           </h1>
 
@@ -145,7 +194,8 @@
 
           <div class="flex justify-center px-4">
             <div class="w-full max-w-3xl p-10 bg-white border rounded-xl">
-              <form class="w-full gap-6 form-grid form-col-2">
+              <form class="w-full gap-6 form-grid form-col-2" id="form-submit" data-title="Empresa Criada! "
+                data-msg="A empresa foi criada com sucesso." data-redirect="ver-empresas.html">
                 <!-- Nome da empresa -->
                 <div class="form-full">
                   <label for="name" class="label">
@@ -223,6 +273,8 @@
                     class="input" />
                 </div>
 
+                <input type="hidden" name="socios_json" id="socios-json">
+
                 <!-- Add sócios -->
                 <div class="form-full">
                   <label class="label">
@@ -236,9 +288,14 @@
                   </button>
                 </div>
 
+                <!-- Lista de Sócios adicionados -->
+                <div id="lista-socios" class=" space- form-full">
+                  <!-- Sócios adicionados aparecerão aqui -->
+                </div>
+
                 <!-- Botão de editar -->
                 <div class="mt-2 form-full">
-                  <button type="submit" class="btn bg-primary" onclick="window.location.href='ver-empresas.html'">
+                  <button type="submit" class="btn bg-primary">
                     Registrar Empresa
                   </button>
                 </div>
@@ -303,7 +360,7 @@
             Cancelar
           </button>
 
-          <button type="button" class="text-white btn bg-primary">
+          <button type="button" class="text-white btn bg-primary" id="btn-add-socio">
             Adicionar Sócio
           </button>
         </footer>

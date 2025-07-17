@@ -1,5 +1,6 @@
 // ==========================
 // INICIALIZAÇÕES GERAIS
+
 // ==========================
 lucide.createIcons();
 gsap.registerPlugin(ScrollTrigger);
@@ -215,7 +216,11 @@ window.addEventListener('resize', () => {
   updateSidebarState();
 });
 
-updateSidebarState();
+if (mobileOverlay) {
+  updateSidebarState();
+}
+
+
 
 
 // ==========================
@@ -356,7 +361,7 @@ function togglePassword() {
 // TABS
 // ==========================
 function showTab(tab) {
-  const tabs = ['pendentes', 'aprovados'];
+  const tabs = ['tab1', 'tab2'];
   tabs.forEach(t => {
     document.getElementById(`tab-${t}`).classList.remove('bg-primary', 'text-white');
     document.getElementById(`tab-${t}`).classList.add('text-gray-700', 'hover:bg-gray-100');
@@ -374,3 +379,273 @@ function showTab(tab) {
 document.addEventListener('DOMContentLoaded', () => {
   MicroModal.init();
 });
+
+
+// ==========================
+// ADICIONAR SÓCIOS
+// ==========================
+const listaSocios = document.getElementById("lista-socios");
+const btnAdicionarSocio = document.getElementById("btn-add-socio");
+
+const inputNome = document.getElementById("socio-nome");
+const inputContacto = document.getElementById("socio-contacto");
+const inputParticipacao = document.getElementById("socio-participacao");
+const campoHidden = document.getElementById("socios-json");
+
+let socios = [];
+let indiceEdicao = null;
+
+// Atualiza o campo hidden com o array em JSON
+function atualizarCampoHidden() {
+  campoHidden.value = JSON.stringify(socios);
+}
+
+// Re-renderiza visualmente a lista de sócios
+function renderizarLista() {
+  listaSocios.innerHTML = "";
+
+  socios.forEach((socio, index) => {
+    const linha = document.createElement("div");
+    linha.className = "flex items-center justify-between w-full p-3 text-sm text-gray-700 bg-white border rounded-md shadow-sm hover:bg-gray-50";
+
+    linha.innerHTML = `
+      <div class="flex-1 flex items-center gap-6">
+        <span class="min-w-[150px] font-medium truncate">${socio.nome}</span>
+        <span class="min-w-[140px] text-gray-500 truncate">${socio.contacto}</span>
+        <span class="min-w-[150px] text-gray-500 truncate">Participação: ${Number(socio.participacao).toLocaleString()} KZ</span>
+      </div>
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <button title="Editar" class="text-gray-500 hover:text-highlight btn-editar-socio" data-index="${index}">
+          <i data-lucide="edit3" class="w-4 h-4"></i>
+        </button>
+        <button title="Remover" class="text-gray-500 hover:text-red-600 btn-remover-socio" data-index="${index}">
+          <i data-lucide="trash-2" class="w-4 h-4"></i>
+        </button>
+      </div>
+    `;
+
+    listaSocios.appendChild(linha);
+  });
+
+  lucide.createIcons();
+  atualizarCampoHidden();
+}
+
+// Adicionar ou editar sócio
+if (btnAdicionarSocio) {
+  btnAdicionarSocio.addEventListener("click", () => {
+    const nome = inputNome.value.trim();
+    const contacto = inputContacto.value.trim();
+    const participacao = inputParticipacao.value.trim();
+
+    if (!nome || !contacto || !participacao) {
+      alert("Preencha todos os campos do sócio!");
+      return;
+    }
+
+    const novoSocio = { nome, contacto, participacao };
+
+    if (indiceEdicao !== null) {
+      socios[indiceEdicao] = novoSocio;
+      indiceEdicao = null;
+    } else {
+      socios.push(novoSocio);
+    }
+
+    renderizarLista();
+
+    // Reset e fecha modal
+    inputNome.value = "";
+    inputContacto.value = "";
+    inputParticipacao.value = "";
+    MicroModal.close("modal-socios");
+  });
+}
+
+if (listaSocios) {
+  // Remover sócio
+  listaSocios.addEventListener("click", (e) => {
+    const btn = e.target.closest(".btn-remover-socio");
+    if (btn) {
+      const index = parseInt(btn.dataset.index);
+      socios.splice(index, 1);
+      renderizarLista();
+    }
+  });
+
+  // Editar sócio
+  listaSocios.addEventListener("click", (e) => {
+    const btn = e.target.closest(".btn-editar-socio");
+    if (btn) {
+      const index = parseInt(btn.dataset.index);
+      const socio = socios[index];
+
+      inputNome.value = socio.nome;
+      inputContacto.value = socio.contacto;
+      inputParticipacao.value = socio.participacao;
+
+      indiceEdicao = index;
+      MicroModal.show("modal-socios");
+    }
+  });
+}
+
+
+// ==========================
+// ADICIONAR LINHAS
+// ==========================
+function AdicionarLinha() {
+  const tbody = document.querySelector("tbody");
+  const linhaOriginal = tbody.querySelector("tr");
+  const novaLinha = linhaOriginal.cloneNode(true);
+
+  // Limpa os valores dos inputs da nova linha
+  novaLinha.querySelectorAll("input").forEach(input => input.value = "");
+  novaLinha.querySelectorAll("select").forEach(select => select.selectedIndex = 0);
+
+  // Adiciona evento ao botão de remover na nova linha
+  const btnRemover = novaLinha.querySelector("button");
+  btnRemover.addEventListener("click", function () {
+    if (tbody.children.length > 1) {
+      novaLinha.remove();
+    } else {
+      alert("Tem que deixar pelo menos uma linha, cria!");
+    }
+  });
+
+  tbody.appendChild(novaLinha);
+}
+
+// Também já ativa o botão de remover da primeira linha
+document.addEventListener("DOMContentLoaded", () => {
+  const btnRemover = document.querySelector("#btn-remover-linha");
+  if (btnRemover) {
+    btnRemover.addEventListener("click", function () {
+      const tbody = document.querySelector("tbody");
+      if (tbody.children.length > 1) {
+        this.closest("tr").remove();
+      } else {
+        alert("Tem que deixar pelo menos uma linha, cria!");
+      }
+    });
+  }
+});
+
+
+// ==========================
+// CONFIRMAR AÇÃO
+// ==========================
+document.addEventListener("click", function (e) {
+  const btn = e.target.closest(".btn-acao");
+  if (!btn) return;
+
+  const titulo = btn.dataset.title || "Tens certeza?";
+  const mensagem = btn.dataset.msg || "Esta ação é irreversível.";
+  const tipo = btn.dataset.tipo || "info";
+  const acao = btn.dataset.action;
+
+  Swal.fire({
+    html: `
+    <div class="flex flex-col items-center text-center">
+      <i data-lucide="${tipo === 'apagar' ? 'alert-circle' : 'help-circle'}"
+         class="w-14 h-14 mb-3"></i>
+      <h2 class="text-xl font-semibold text-gray-900 mb-2">${titulo}</h2>
+      <p class="text-gray-700 text-sm">${mensagem}</p>
+    </div>
+  `,
+    showCancelButton: true,
+    confirmButtonText: "Sim, continuar!",
+    cancelButtonText: "Cancelar",
+
+    // Estilização com Tailwind
+    customClass: {
+      popup: "rounded-xl p-6 shadow-xl bg-white",
+      confirmButton: `${tipo === "apagar"
+        ? "bg-red-600 hover:bg-red-700"
+        : "bg-primary"
+        } text-white px-4 py-2 mt-4 rounded-lg text-sm font-medium transition-colors`,
+      cancelButton: "mt-4 ml-2 px-4 py-2 text-sm font-medium text-gray-700 transition-all duration-200 border border-gray-200 rounded-lg tab-button hover:bg-gray-100",
+    },
+
+    buttonsStyling: false,
+
+    didOpen: () => {
+      lucide.createIcons();
+    }
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({
+        html: `
+            <div class="flex flex-col items-center text-center">
+              <i data-lucide="circle-check"
+                class="w-14 h-14 mb-3 text-green-500"></i>
+              <h2 class="text-xl font-semibold text-gray-900 mb-2">Feito!</h2>
+              <p class="text-gray-700 text-sm">A operação foi concluída com sucesso.</p>
+            </div>
+        `,
+        customClass: {
+          popup: "rounded-xl p-6 shadow-xl bg-white",
+          confirmButton: "bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium",
+        },
+        buttonsStyling: false,
+        didOpen: () => {
+          lucide.createIcons();
+          if (acao) {
+            window.location.href = acao;
+          } else {
+            console.warn("Sem action definida");
+          }
+        }
+      });
+
+    }
+  });
+
+});
+
+
+// ==========================
+// CONFIRMAR APÓS SUBMIT DE CADASTRO
+// ==========================
+document.querySelector("#form-submit").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const form = this;
+
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+  const titulo = form.dataset.title || "Sucesso!";
+  const mensagem = form.dataset.msg || "Tudo certo!";
+  const destino = form.dataset.redirect || "index.html";
+
+  Swal.fire({
+    html: `
+      <div class="flex flex-col items-center text-center">
+        <i data-lucide="circle-check" class="w-14 h-14 mb-3 text-green-500"></i>
+        <h2 class="text-xl font-semibold text-gray-900 mb-2">${titulo}</h2>
+        <p class="text-gray-700 text-sm">${mensagem}</p>
+      </div>
+    `,
+
+    showConfirmButton: true,
+    confirmButtonText: "Fechar",
+    customClass: {
+      popup: "rounded-xl p-6 shadow-xl bg-white",
+      confirmButton: "bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium",
+    },
+    buttonsStyling: false,
+    didOpen: () => lucide.createIcons(),
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location.href = destino;
+    }
+  });
+});
+
+// ==========================
+// CONFIRMAR APÓS SUBMIT DE EDITAR
+// ==========================
+// REPLICAR BLOCO DE CONFIRMAÇÃO DE SUBMIT DE CADASTRO ACIMA

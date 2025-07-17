@@ -37,21 +37,21 @@
 
 /* Adicionais úteis */
 .bg-danger {
-    @apply bg-red-600 text-white hover:bg-red-700 transition;
+    @apply text-white transition bg-red-600 hover:bg-red-700;
 }
 
 .bg-success {
-    @apply bg-green-500 text-white hover:bg-green-600 transition;
+    @apply text-white transition bg-green-500 hover:bg-green-600;
 }
 
 .tab-btn {
-    @apply px-4 py-2 text-sm font-medium border rounded-lg transition-all duration-200;
+    @apply px-4 py-2 text-sm font-medium transition-all duration-200 border rounded-lg;
 }
 
 .active-tab {
-    @apply bg-primary text-white border-primary;
+    @apply text-white bg-primary border-primary;
 }
 
 .tab-btn:not(.active-tab) {
-    @apply bg-white text-gray-700 border-gray-300 hover:bg-gray-100;
+    @apply text-gray-700 bg-white border-gray-300 hover:bg-gray-100;
 }
