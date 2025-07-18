@@ -1,3 +1,58 @@
+const ctxPrazo = document.getElementById('graficoPrazo');
+new Chart(ctxPrazo, {
+  type: 'bar',
+  data: {
+    labels: [
+      'Grupo A',
+      'Grupo B',
+      'Grupo C',
+      'Grupo D',
+      'Grupo E',
+      'Grupo F'
+    ],
+    datasets: [{
+      label: 'Clientes',
+      data: [4, 6, 10, 4, 7, 4], 
+      backgroundColor: '#154A99',
+      borderRadius: 3,
+      barThickness: 38
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => ` ${ctx.raw} clientes`
+        }
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          color: '#6b7280',
+          stepSize: 2,
+          font: { size: 12 }
+        },
+        grid: { color: '#f3f4f6' }
+      },
+      x: {
+        ticks: {
+          color: '#6b7280',
+          font: { size: 11 },
+          maxRotation: 30,
+          minRotation: 20
+        },
+        grid: { display: false }
+      }
+    }
+  }
+});
+
+
 // Gráfico de Pizza (Distribuição de Contas)
 const ctxContas = document.getElementById('graficoContas');
 new Chart(ctxContas, {

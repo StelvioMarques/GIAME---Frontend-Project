@@ -361,17 +361,24 @@ function togglePassword() {
 // TABS
 // ==========================
 function showTab(tab) {
-  const tabs = ['tab1', 'tab2'];
-  tabs.forEach(t => {
-    document.getElementById(`tab-${t}`).classList.remove('bg-primary', 'text-white');
-    document.getElementById(`tab-${t}`).classList.add('text-gray-700', 'hover:bg-gray-100');
-    document.getElementById(`content-${t}`).classList.add('hidden');
+  // Pega todos os elementos que começam com id="tab-"
+  const tabButtons = document.querySelectorAll('[id^="tab-"]');
+  const tabContents = document.querySelectorAll('[id^="content-"]');
+
+  tabButtons.forEach(btn => {
+    btn.classList.remove('bg-primary', 'text-white');
+    btn.classList.add('text-gray-700', 'hover:bg-gray-100');
+  });
+
+  tabContents.forEach(content => {
+    content.classList.add('hidden');
   });
 
   document.getElementById(`tab-${tab}`).classList.add('bg-primary', 'text-white');
   document.getElementById(`tab-${tab}`).classList.remove('text-gray-700', 'hover:bg-gray-100');
   document.getElementById(`content-${tab}`).classList.remove('hidden');
 }
+
 
 // ==========================
 // MICROMODAL
@@ -406,7 +413,7 @@ function renderizarLista() {
 
   socios.forEach((socio, index) => {
     const linha = document.createElement("div");
-    linha.className = "flex items-center justify-between w-full p-3 text-sm text-gray-700 bg-white border rounded-md shadow-sm hover:bg-gray-50";
+    linha.className = "flex items-center justify-between w-full p-4 text-sm text-gray-700 bg-white border rounded-md shadow-sm hover:bg-gray-50";
 
     linha.innerHTML = `
       <div class="flex-1 flex items-center gap-6">
@@ -509,7 +516,7 @@ function AdicionarLinha() {
     if (tbody.children.length > 1) {
       novaLinha.remove();
     } else {
-      alert("Tem que deixar pelo menos uma linha, cria!");
+      alert("Tem que deixar pelo menos uma linha!");
     }
   });
 
@@ -649,3 +656,21 @@ document.querySelector("#form-submit").addEventListener("submit", function (e) {
 // CONFIRMAR APÓS SUBMIT DE EDITAR
 // ==========================
 // REPLICAR BLOCO DE CONFIRMAÇÃO DE SUBMIT DE CADASTRO ACIMA
+
+
+// ===========================
+// Alternar exibição do campo add sócio (com base no tipo de cliente)
+// ===========================
+
+window.addEventListener('DOMContentLoaded', function () {
+  const tipoSelect = document.getElementById('tipo-cliente');
+  const grupoSocios = document.getElementById('grupo-socios');
+
+  function atualizarExibicaoSocios() {
+    const tipo = tipoSelect.value;
+    grupoSocios.classList.toggle('hidden', tipo === 'particular');
+  }
+
+  atualizarExibicaoSocios(); // já verifica o estado no início
+  tipoSelect.addEventListener('change', atualizarExibicaoSocios);
+});

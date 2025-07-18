@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light dark" />
-  <title>Usuários Operacionais</title>
+  <title>Clientes</title>
 
   <link rel="stylesheet" href="../../../../css/tailwind/output.css">
   <link rel="stylesheet" href="../../../../css/index.css">
@@ -47,70 +47,67 @@
             Dashboard
           </a>
 
-          <!-- Seção: Acessos -->
+          <!-- Seção: Solicitações -->
           <div class="collapsible-section">
             <button
               class="collapsible-trigger sidebar-link w-full flex items-center justify-between px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 group">
               <div class="flex items-center gap-2">
-                <i data-lucide="Shield" class="w-4 h-4 collapsibble-menu-icons"></i>
-                <span class="truncate">Gerir Acessos</span>
+                <i data-lucide="mail-plus" class="w-4 h-4 collapsibble-menu-icons"></i>
+                <span class="truncate">Solicitações</span>
               </div>
               <i data-lucide="chevron-down" class="w-4 h-4 collapsibble-menu-icons dropdown-transition"></i>
             </button>
 
             <div class="mt-1 collapsible-content">
               <div class="pl-4 space-y-1 border-l-2">
-                <a href="../gestão de acessos/solicitacoes-pendentes.html" class="sidebar-subitem">
-                  <i data-lucide="Inbox" class="w-4 h-4"></i> Solicitações pendentes
-                </a>
-                <a href="../gestão de acessos/clientes-cadastrados.html" class="sidebar-subitem">
-                  <i data-lucide="Contact" class="w-4 h-4"></i> Clientes cadastrados
+                <a href="../solicitacoes/solicitacoes-pendentes.html" class="sidebar-subitem">
+                  <i data-lucide="clock-alert" class="w-4 h-4"></i> Solicitações pendentes
                 </a>
               </div>
             </div>
           </div>
 
-          <!-- Seção: Utilizadores -->
+          <!-- Seção: Usuários -->
           <div class="collapsible-section">
             <button
               class="collapsible-trigger sidebar-link w-full flex items-center justify-between px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 group">
               <div class="flex items-center gap-2">
                 <i data-lucide="user-cog" class="w-4 h-4 collapsibble-menu-icons"></i>
-                <span class="truncate">Gerir Utilizadores</span>
+                <span class="truncate">Gerir Usuários</span>
               </div>
               <i data-lucide="chevron-down" class="w-4 h-4 collapsibble-menu-icons dropdown-transition"></i>
             </button>
 
             <div class="mt-1 collapsible-content">
               <div class="pl-4 space-y-1 border-l-2">
-                <a href="ver-usuarios.html" class="sidebar-subitem">
-                  <i data-lucide="users" class="w-4 h-4"></i> Ver Utilizadores
+                <a href="../usuarios/ver-usuarios.html" class="sidebar-subitem">
+                  <i data-lucide="users" class="w-4 h-4"></i> Ver Usuários
                 </a>
-                <a href="criar-usuario.html" class="sidebar-subitem">
-                  <i data-lucide="plus" class="w-4 h-4"></i> Criar Utilizador
+                <a href="../usuarios/ver-usuarios.html" class="sidebar-subitem">
+                  <i data-lucide="plus" class="w-4 h-4"></i> Criar Usuário
                 </a>
               </div>
             </div>
           </div>
 
-          <!-- Seção: Empresas -->
+          <!-- Seção: Clientes -->
           <div class="collapsible-section">
             <button
               class="collapsible-trigger sidebar-link w-full flex items-center justify-between px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 group">
               <div class="flex items-center gap-2">
-                <i data-lucide="briefcase" class="w-4 h-4 collapsibble-menu-icons"></i>
-                <span class="truncate">Gerir Empresas</span>
+                <i data-lucide="user-cog" class="w-4 h-4 collapsibble-menu-icons"></i>
+                <span class="truncate">Gerir Clientes</span>
               </div>
               <i data-lucide="chevron-down" class="w-4 h-4 collapsibble-menu-icons dropdown-transition"></i>
             </button>
 
             <div class="mt-1 collapsible-content">
               <div class="pl-4 space-y-1 border-l-2">
-                <a href="../gestao-de-empresas/ver-empresas.html" class="sidebar-subitem">
-                  <i data-lucide="building2" class="w-4 h-4"></i> Ver Empresas
+                <a href="../clientes/ver-clientes.html" class="sidebar-subitem">
+                  <i data-lucide="users" class="w-4 h-4"></i> Ver clientes
                 </a>
-                <a href="../gestao-de-empresas/criar-empresa.html" class="sidebar-subitem">
-                  <i data-lucide="plus" class="w-4 h-4"></i> Criar Empresa
+                <a href="../clientes/adicionar-cliente.html" class="sidebar-subitem">
+                  <i data-lucide="plus" class="w-4 h-4"></i> Adicionar Cliente
                 </a>
               </div>
             </div>
@@ -182,7 +179,7 @@
       <main class="flex-1 overflow-auto">
         <div class=" page-content">
           <h1 class="text-3xl font-semibold text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text">
-            Usuários Operacionais
+            Clientes Cadastrados
           </h1>
 
           <div class="flex flex-col gap-2">
@@ -190,31 +187,35 @@
             <div class="flex gap-2 mt-2">
               <button onclick="showTab('tab1')" id="tab-tab1"
                 class="px-4 py-2 text-sm font-medium text-white transition-all duration-200 border border-gray-200 rounded-lg tab-button bg-primary">
-                Pendentes
+                Todos
               </button>
               <button onclick="showTab('tab2')" id="tab-tab2"
                 class="px-4 py-2 text-sm font-medium text-gray-700 transition-all duration-200 border border-gray-200 rounded-lg tab-button hover:bg-gray-100">
-                Aprovados
+                Singulares
+              </button>
+              <button onclick="showTab('tab3')" id="tab-tab3"
+                class="px-4 py-2 text-sm font-medium text-gray-700 transition-all duration-200 border border-gray-200 rounded-lg tab-button hover:bg-gray-100">
+                Empresas
               </button>
             </div>
 
-            <!-- Search + Registrar -->
+            <!-- Search + Add -->
             <div class="flex flex-wrap items-center justify-between mb- gap-">
               <!-- Search Input -->
               <div class="relative w-full max-w-sm">
                 <span class="absolute inset-y-0 flex items-center text-gray-400 left-3">
                   <i data-lucide="search" class="w-4 h-4"></i>
                 </span>
-                <input type="text" placeholder="Pesquisar usuário..."
+                <input type="text" placeholder="Pesquisar cliente..."
                   class="w-full px-10 py-2 text-sm transition-all duration-200 ease-in-out border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:outline-none" />
               </div>
 
-              <!-- Botão Registrar -->
+              <!-- Botão Adicionar -->
               <button
                 class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition-colors rounded-lg bg-primary"
-                onclick="window.location.href='criar-usuario.html'">
+                onclick="window.location.href='adicionar-cliente.html'">
                 <i data-lucide="plus" class="w-4 h-4"></i>
-                Criar Usuário
+                Adicionar cliente
               </button>
             </div>
           </div>
@@ -230,7 +231,9 @@
                       <th>Endereço</th>
                       <th>Contacto</th>
                       <th>E-mail</th>
+                      <th>Tipo</th>
                       <th>Estado</th>
+                      <th>Pacote</th>
                       <th class="text-right ">Ações</th>
                     </tr>
                   </thead>
@@ -242,7 +245,9 @@
                       <td>Luanda, Angola</td>
                       <td>+244 999 999 999</td>
                       <td>joao@email.com</td>
-                      <td class="px-3 font-semibold text-highlight">Pendente</td>
+                      <td class="px-3 text-sm text-gray-500">Singular</td>
+                      <td>Activo</td>
+                      <td>Profissional</td>
                       <td class="pr-4 text-right">
                         <div class="relative">
                           <button
@@ -253,22 +258,19 @@
 
                           <div class="hidden bg-white border border-gray-200 rounded-lg shadow-lg w-36 dropdown-menu">
                             <div class="py-1">
-                              <button
-                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50 btn-acao"
-                                data-tipo="confirmar" data-msg="Deseja realmente activar este usuário?"
-                                data-title="Confirmar Operação">
-
-                                <i data-lucide="check" class="w-4 h-4"></i>
-                                Activar
+                              <button onclick="window.location.href = 'visualizar-cliente-singular.html'"
+                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
+                                <i data-lucide="eye" class="w-4 h-4"></i>
+                                ver
                               </button>
-                              <button onclick="window.location.href = 'editar-dados.html'"
+                              <button onclick="window.location.href = 'editar-cliente.html'"
                                 class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
                                 <i data-lucide="edit" class="w-4 h-4"></i>
                                 Editar
                               </button>
                               <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left btn-acao"
-                                data-tipo="apagar" data-msg="Tem certeza que quer remover este usuário?"
-                                data-title="Remover Usuário">
+                                data-tipo="apagar" data-msg="Tem certeza que quer remover este cliente?"
+                                data-title="Remover cliente">
                                 <i data-lucide="trash2" class="w-4 h-4"></i>
                                 Remover
                               </button>
@@ -284,7 +286,9 @@
                       <td>Benguela, Angola</td>
                       <td>+244 998 888 777</td>
                       <td>maria@email.com</td>
-                      <td class="px-3 font-semibold text-highlight">Pendente</td>
+                      <td class="px-3 text-sm text-gray-500">Empresa</td>
+                      <td>Inactivo</td>
+                      <td>Mínimo</td>
                       <td class="pr-4 text-right">
                         <div class="relative">
                           <button
@@ -295,22 +299,19 @@
 
                           <div class="hidden bg-white border border-gray-200 rounded-lg shadow-lg w-36 dropdown-menu">
                             <div class="py-1">
-                              <button
-                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50 btn-acao"
-                                data-tipo="confirmar" data-msg="Deseja realmente activar este usuário?"
-                                data-title="Confirmar Operação">
-
-                                <i data-lucide="check" class="w-4 h-4"></i>
-                                Activar
+                              <button onclick="window.location.href = 'visualizar-cliente-empresa.html'"
+                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
+                                <i data-lucide="eye" class="w-4 h-4"></i>
+                                ver
                               </button>
-                              <button onclick="window.location.href = 'editar-dados.html'"
+                              <button onclick="window.location.href = 'editar-cliente.html'"
                                 class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
                                 <i data-lucide="edit" class="w-4 h-4"></i>
                                 Editar
                               </button>
                               <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left btn-acao"
-                                data-tipo="apagar" data-msg="Tem certeza que quer remover este usuário?"
-                                data-title="Remover Usuário">
+                                data-tipo="apagar" data-msg="Tem certeza que quer remover este cliente?"
+                                data-title="Remover cliente">
                                 <i data-lucide="trash2" class="w-4 h-4"></i>
                                 Remover
                               </button>
@@ -326,7 +327,9 @@
                       <td>Huambo, Angola</td>
                       <td>+244 922 111 222</td>
                       <td>carlos@empresa.com</td>
-                      <td class="px-3 font-semibold text-highlight">Pendente</td>
+                      <td class="px-3 text-sm text-gray-500">Singular</td>
+                      <td>Activo</td>
+                      <td>Mínimo</td>
                       <td class="pr-4 text-right">
                         <div class="relative">
                           <button
@@ -337,22 +340,19 @@
 
                           <div class="hidden bg-white border border-gray-200 rounded-lg shadow-lg w-36 dropdown-menu">
                             <div class="py-1">
-                              <button
-                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50 btn-acao"
-                                data-tipo="confirmar" data-msg="Deseja realmente activar este usuário?"
-                                data-title="Confirmar Operação">
-
-                                <i data-lucide="check" class="w-4 h-4"></i>
-                                Activar
+                              <button onclick="window.location.href = 'visualizar-cliente-singular.html'"
+                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
+                                <i data-lucide="eye" class="w-4 h-4"></i>
+                                ver
                               </button>
-                              <button onclick="window.location.href = 'editar-dados.html'"
+                              <button onclick="window.location.href = 'editar-cliente.html'"
                                 class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
                                 <i data-lucide="edit" class="w-4 h-4"></i>
                                 Editar
                               </button>
                               <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left btn-acao"
-                                data-tipo="apagar" data-msg="Tem certeza que quer remover este usuário?"
-                                data-title="Remover Usuário">
+                                data-tipo="apagar" data-msg="Tem certeza que quer remover este cliente?"
+                                data-title="Remover cliente">
                                 <i data-lucide="trash2" class="w-4 h-4"></i>
                                 Remover
                               </button>
@@ -378,7 +378,9 @@
                       <th>Endereço</th>
                       <th>Contacto</th>
                       <th>E-mail</th>
+                      <th>Tipo</th>
                       <th>Estado</th>
+                      <th>Pacote</th>
                       <th class="text-right ">Ações</th>
                     </tr>
                   </thead>
@@ -390,7 +392,9 @@
                       <td>Luanda, Angola</td>
                       <td>+244 999 999 999</td>
                       <td>joao@email.com</td>
-                      <td class="px-3 font-semibold text-primary">Aprovado</td>
+                      <td class="px-3 text-gray-500">Singular</td>
+                      <td>Activo</td>
+                      <td>Profissional</td>
                       <td class="pr-4 text-right">
                         <div class="relative">
                           <button
@@ -401,22 +405,19 @@
 
                           <div class="hidden bg-white border border-gray-200 rounded-lg shadow-lg w-36 dropdown-menu">
                             <div class="py-1">
-                              <button
-                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50 btn-acao"
-                                data-tipo="confirmar" data-msg="Deseja realmente desactivar este usuário?"
-                                data-title="Confirmar Operação">
-
-                                <i data-lucide="x" class="w-4 h-4"></i>
-                                Desactivar
+                              <button onclick="window.location.href = 'visualizar-cliente-singular.html'"
+                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
+                                <i data-lucide="eye" class="w-4 h-4"></i>
+                                ver
                               </button>
-                              <button onclick="window.location.href = 'editar-dados.html'"
+                              <button onclick="window.location.href = 'editar-cliente.html'"
                                 class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
                                 <i data-lucide="edit" class="w-4 h-4"></i>
                                 Editar
                               </button>
                               <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left btn-acao"
-                                data-tipo="apagar" data-msg="Tem certeza que quer remover este usuário?"
-                                data-title="Remover Usuário">
+                                data-tipo="apagar" data-msg="Tem certeza que quer remover este cliente?"
+                                data-title="Remover cliente">
                                 <i data-lucide="trash2" class="w-4 h-4"></i>
                                 Remover
                               </button>
@@ -432,7 +433,9 @@
                       <td>Benguela, Angola</td>
                       <td>+244 998 888 777</td>
                       <td>maria@email.com</td>
-                      <td class="px-3 font-semibold text-primary">Aprovado</td>
+                      <td class="px-3 text-gray-500">Singular</td>
+                      <td>Activo</td>
+                      <td>Mínimo</td>
                       <td class="pr-4 text-right">
                         <div class="relative">
                           <button
@@ -443,22 +446,19 @@
 
                           <div class="hidden bg-white border border-gray-200 rounded-lg shadow-lg w-36 dropdown-menu">
                             <div class="py-1">
-                              <button
-                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50 btn-acao"
-                                data-tipo="confirmar" data-msg="Deseja realmente desactivar este usuário?"
-                                data-title="Confirmar Operação">
-
-                                <i data-lucide="x" class="w-4 h-4"></i>
-                                Desactivar
+                              <button onclick="window.location.href = 'visualizar-cliente-singular.html'"
+                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
+                                <i data-lucide="eye" class="w-4 h-4"></i>
+                                ver
                               </button>
-                              <button onclick="window.location.href = 'editar-dados.html'"
+                              <button onclick="window.location.href = 'editar-cliente.html'"
                                 class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
                                 <i data-lucide="edit" class="w-4 h-4"></i>
                                 Editar
                               </button>
                               <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left btn-acao"
-                                data-tipo="apagar" data-msg="Tem certeza que quer remover este usuário?"
-                                data-title="Remover Usuário">
+                                data-tipo="apagar" data-msg="Tem certeza que quer remover este cliente?"
+                                data-title="Remover cliente">
                                 <i data-lucide="trash2" class="w-4 h-4"></i>
                                 Remover
                               </button>
@@ -474,7 +474,9 @@
                       <td>Huambo, Angola</td>
                       <td>+244 922 111 222</td>
                       <td>carlos@empresa.com</td>
-                      <td class="px-3 font-semibold text-primary">Aprovado</td>
+                      <td class="px-3 text-gray-500">Singular</td>
+                      <td>Inactivo</td>
+                      <td>Mínimo</td>
                       <td class="pr-4 text-right">
                         <div class="relative">
                           <button
@@ -485,22 +487,167 @@
 
                           <div class="hidden bg-white border border-gray-200 rounded-lg shadow-lg w-36 dropdown-menu">
                             <div class="py-1">
-                              <button
-                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50 btn-acao"
-                                data-tipo="confirmar" data-msg="Deseja realmente desactivar este usuário?"
-                                data-title="Confirmar Operação">
-
-                                <i data-lucide="x" class="w-4 h-4"></i>
-                                Desactivar
+                              <button onclick="window.location.href = 'visualizar-cliente-singular.html'"
+                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
+                                <i data-lucide="eye" class="w-4 h-4"></i>
+                                ver
                               </button>
-                              <button onclick="window.location.href = 'editar-dados.html'"
+                              <button onclick="window.location.href = 'editar-cliente.html'"
                                 class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
                                 <i data-lucide="edit" class="w-4 h-4"></i>
                                 Editar
                               </button>
                               <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left btn-acao"
-                                data-tipo="apagar" data-msg="Tem certeza que quer remover este usuário?"
-                                data-title="Remover Usuário">
+                                data-tipo="apagar" data-msg="Tem certeza que quer remover este cliente?"
+                                data-title="Remover cliente">
+                                <i data-lucide="trash2" class="w-4 h-4"></i>
+                                Remover
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div id="content-tab3" class="hidden tab-content">
+            <div class="overflow-hidden bg-white border rounded-lg shadow-sm">
+              <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left text-gray-700 ">
+                  <thead class="">
+                    <tr>
+                      <th>ID</th>
+                      <th>Nome</th>
+                      <th>Endereço</th>
+                      <th>Contacto</th>
+                      <th>E-mail</th>
+                      <th>Tipo</th>
+                      <th>Estado</th>
+                      <th>Pacote</th>
+                      <th class="text-right ">Ações</th>
+                    </tr>
+                  </thead>
+
+                  <tbody class="divide-y divide-gray-200">
+                    <tr>
+                      <td>1</td>
+                      <td>João Pedro</td>
+                      <td>Luanda, Angola</td>
+                      <td>+244 999 999 999</td>
+                      <td>joao@email.com</td>
+                      <td class="px-3 text-gray-500">Empresa</td>
+                      <td>Activo</td>
+                      <td>Mínimo</td>
+                      <td class="pr-4 text-right">
+                        <div class="relative">
+                          <button
+                            class="p-1 text-gray-500 transition-colors duration-200 rounded-full hover:text-gray-700 hover:bg-gray-100"
+                            onclick="toggleDropdown(this)">
+                            <i data-lucide="more-vertical" class="w-4 h-4"></i>
+                          </button>
+
+                          <div class="hidden bg-white border border-gray-200 rounded-lg shadow-lg w-36 dropdown-menu">
+                            <div class="py-1">
+                              <button onclick="window.location.href = 'visualizar-cliente-empresa.html'"
+                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
+                                <i data-lucide="eye" class="w-4 h-4"></i>
+                                ver
+                              </button>
+                              <button onclick="window.location.href = 'editar-cliente.html'"
+                                class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
+                                <i data-lucide="edit" class="w-4 h-4"></i>
+                                Editar
+                              </button>
+                              <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left btn-acao"
+                                data-tipo="apagar" data-msg="Tem certeza que quer remover este cliente?"
+                                data-title="Remover Cliente">
+                                <i data-lucide="trash2" class="w-4 h-4"></i>
+                                Remover
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>2</td>
+                      <td>Maria Santos</td>
+                      <td>Benguela, Angola</td>
+                      <td>+244 998 888 777</td>
+                      <td>maria@email.com</td>
+                      <td class="px-3 text-gray-500">Empresa</td>
+                      <td>Activo</td>
+                      <td>Mínimo</td>
+                      <td class="pr-4 text-right">
+                        <div class="relative">
+                          <button
+                            class="p-1 text-gray-500 transition-colors duration-200 rounded-full hover:text-gray-700 hover:bg-gray-100"
+                            onclick="toggleDropdown(this)">
+                            <i data-lucide="more-vertical" class="w-4 h-4"></i>
+                          </button>
+
+                          <div class="hidden bg-white border border-gray-200 rounded-lg shadow-lg w-36 dropdown-menu">
+                            <div class="py-1">
+                              <button onclick="window.location.href = 'visualizar-cliente-empresa.html'"
+                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
+
+                                <i data-lucide="eye" class="w-4 h-4"></i>
+                                ver
+                              </button>
+                              <button onclick="window.location.href = 'editar-cliente.html'"
+                                class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
+                                <i data-lucide="edit" class="w-4 h-4"></i>
+                                Editar
+                              </button>
+                              <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left btn-acao"
+                                data-tipo="apagar" data-msg="Tem certeza que quer remover este cliente?"
+                                data-title="Remover cliente">
+                                <i data-lucide="trash2" class="w-4 h-4"></i>
+                                Remover
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>3</td>
+                      <td>Carlos Alberto</td>
+                      <td>Huambo, Angola</td>
+                      <td>+244 922 111 222</td>
+                      <td>carlos@empresa.com</td>
+                      <td class="px-3 text-gray-500">Empresa</td>
+                      <td>Activo</td>
+                      <td>Profissional</td>
+                      <td class="pr-4 text-right">
+                        <div class="relative">
+                          <button
+                            class="p-1 text-gray-500 transition-colors duration-200 rounded-full hover:text-gray-700 hover:bg-gray-100"
+                            onclick="toggleDropdown(this)">
+                            <i data-lucide="more-vertical" class="w-4 h-4"></i>
+                          </button>
+
+                          <div class="hidden bg-white border border-gray-200 rounded-lg shadow-lg w-36 dropdown-menu">
+                            <div class="py-1">
+                              <button onclick="window.location.href = 'visualizar-cliente-empresa.html'"
+                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
+                                <i data-lucide="eye" class="w-4 h-4"></i>
+                                Ver
+                              </button>
+                              <button onclick="window.location.href = 'editar-cliente.html'"
+                                class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
+                                <i data-lucide="edit" class="w-4 h-4"></i>
+                                Editar
+                              </button>
+                              <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left btn-acao"
+                                data-tipo="apagar" data-msg="Tem certeza que quer remover este cliente?"
+                                data-title="Remover Cliente">
                                 <i data-lucide="trash2" class="w-4 h-4"></i>
                                 Remover
                               </button>

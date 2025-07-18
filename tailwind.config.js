@@ -3,6 +3,7 @@ module.exports = {
   content: [
     "./html/**/*.html",
     "./*.html",
+    "./js/*.js",
   ],
   safelist: [
     'bg-gradient-to-r',

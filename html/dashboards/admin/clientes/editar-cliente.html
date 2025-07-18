@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light dark" />
-  <title>Editar Empresa</title>
+  <title>Editar Cliente</title>
 
   <link rel="stylesheet" href="../../../../css/tailwind/output.css">
   <link rel="stylesheet" href="../../../../css/index.css">
@@ -48,70 +48,67 @@
             Dashboard
           </a>
 
-          <!-- Seção: Acessos -->
+          <!-- Seção: Solicitações -->
           <div class="collapsible-section">
             <button
               class="collapsible-trigger sidebar-link w-full flex items-center justify-between px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 group">
               <div class="flex items-center gap-2">
-                <i data-lucide="Shield" class="w-4 h-4 collapsibble-menu-icons"></i>
-                <span class="truncate">Gerir Acessos</span>
+                <i data-lucide="mail-plus" class="w-4 h-4 collapsibble-menu-icons"></i>
+                <span class="truncate">Solicitações</span>
               </div>
               <i data-lucide="chevron-down" class="w-4 h-4 collapsibble-menu-icons dropdown-transition"></i>
             </button>
 
             <div class="mt-1 collapsible-content">
               <div class="pl-4 space-y-1 border-l-2">
-                <a href="../gestão de acessos/solicitacoes-pendentes.html" class="sidebar-subitem">
-                  <i data-lucide="Inbox" class="w-4 h-4"></i> Solicitações pendentes
-                </a>
-                <a href="../gestão de acessos/clientes-cadastrados.html" class="sidebar-subitem">
-                  <i data-lucide="Contact" class="w-4 h-4"></i> Clientes cadastrados
+                <a href="../solicitacoes/solicitacoes-pendentes.html" class="sidebar-subitem">
+                  <i data-lucide="clock-alert" class="w-4 h-4"></i> Solicitações pendentes
                 </a>
               </div>
             </div>
           </div>
 
-          <!-- Seção: Utilizadores -->
+          <!-- Seção: Usuários -->
           <div class="collapsible-section">
             <button
               class="collapsible-trigger sidebar-link w-full flex items-center justify-between px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 group">
               <div class="flex items-center gap-2">
                 <i data-lucide="user-cog" class="w-4 h-4 collapsibble-menu-icons"></i>
-                <span class="truncate">Gerir Utilizadores</span>
+                <span class="truncate">Gerir Usuários</span>
               </div>
               <i data-lucide="chevron-down" class="w-4 h-4 collapsibble-menu-icons dropdown-transition"></i>
             </button>
 
             <div class="mt-1 collapsible-content">
               <div class="pl-4 space-y-1 border-l-2">
-                <a href="../gestao-de-usuarios/ver-usuarios.html" class="sidebar-subitem">
-                  <i data-lucide="users" class="w-4 h-4"></i> Ver Utilizadores
+                <a href="../usuarios/ver-usuarios.html" class="sidebar-subitem">
+                  <i data-lucide="users" class="w-4 h-4"></i> Ver Usuários
                 </a>
-                <a href="../gestao-de-usuarios/criar-usuario.html" class="sidebar-subitem">
-                  <i data-lucide="plus" class="w-4 h-4"></i> Criar Utilizador
+                <a href="../usuarios/ver-usuarios.html" class="sidebar-subitem">
+                  <i data-lucide="plus" class="w-4 h-4"></i> Criar Usuário
                 </a>
               </div>
             </div>
           </div>
 
-          <!-- Seção: Empresas -->
+          <!-- Seção: Clientes -->
           <div class="collapsible-section">
             <button
               class="collapsible-trigger sidebar-link w-full flex items-center justify-between px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 group">
               <div class="flex items-center gap-2">
-                <i data-lucide="briefcase" class="w-4 h-4 collapsibble-menu-icons"></i>
-                <span class="truncate">Gerir Empresas</span>
+                <i data-lucide="user-cog" class="w-4 h-4 collapsibble-menu-icons"></i>
+                <span class="truncate">Gerir Clientes</span>
               </div>
               <i data-lucide="chevron-down" class="w-4 h-4 collapsibble-menu-icons dropdown-transition"></i>
             </button>
 
             <div class="mt-1 collapsible-content">
               <div class="pl-4 space-y-1 border-l-2">
-                <a href="ver-empresas.html" class="sidebar-subitem">
-                  <i data-lucide="building2" class="w-4 h-4"></i> Ver Empresas
+                <a href="../clientes/ver-clientes.html" class="sidebar-subitem">
+                  <i data-lucide="users" class="w-4 h-4"></i> Ver clientes
                 </a>
-                <a href="criar-empresa.html" class="sidebar-subitem">
-                  <i data-lucide="plus" class="w-4 h-4"></i> Criar Empresa
+                <a href="../clientes/adicionar-cliente.html" class="sidebar-subitem">
+                  <i data-lucide="plus" class="w-4 h-4"></i> Adicionar Cliente
                 </a>
               </div>
             </div>
@@ -184,7 +181,7 @@
         <div class="page-content">
           <h1
             class="mx-auto mt-6 text-3xl font-semibold text-center text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text">
-            Editar Empresa
+            Editar Cliente
           </h1>
 
           <p class="text-sm text-center text-gray-600 ">
@@ -193,7 +190,19 @@
 
           <div class="flex justify-center px-4">
             <div class="w-full max-w-3xl p-10 bg-white border rounded-xl">
-              <form class="w-full gap-6 form-grid form-col-2">
+              <form class="w-full gap-6 form-grid form-col-2" action="ver-clientes.html">
+                <!-- Tipo de Cliente -->
+                <div class="form-full">
+                  <label for="tipo-cliente" class="label">
+                    Tipo de Cliente <span class="text-red-500">*</span>
+                  </label>
+                  <select id="tipo-cliente" name="tipo-cliente" required class="input">
+                    <option value="" disabled>Selecione um tipo de cliente</option>
+                    <option value="empresa">Empresa</option>
+                    <option value="particular" selected>Particular</option>
+                  </select>
+                </div>
+
                 <!-- Nome da empresa -->
                 <div class="form-full">
                   <label for="name" class="label">
@@ -219,7 +228,7 @@
                   </label>
                   <input type="text" id="contact" name="contact" required placeholder="+244 923 456 789"
                     pattern="\+244 \d{3} \d{3} \d{3}" title="Formato esperado: +244 XXX XXX XXX" class="input"
-                    value="+244 933 555 032" />
+                    value="+244 923 456 789" />
                 </div>
 
                 <!-- NIF -->
@@ -228,7 +237,7 @@
                     NIF <span class="text-red-500">*</span>
                   </label>
                   <input type="text" id="nif" name="nif" required placeholder="Insira o NIF" class="input"
-                    value="2222222222" />
+                    value="2451223450" />
                 </div>
 
                 <!-- Email -->
@@ -237,7 +246,7 @@
                     Email <span class="text-red-500">*</span>
                   </label>
                   <input type="email" id="email" name="email" required placeholder="email@exemplo.com" class="input"
-                    value="joao.company@gmail.com" />
+                    value="joao.silva@empresa.com" />
                 </div>
 
                 <!-- Objecto social -->
@@ -246,15 +255,16 @@
                     Objecto Social <span class="text-red-500">*</span>
                   </label>
                   <input type="text" id="objecto-social" name="objecto-social" required
-                    placeholder="Insira o objecto social" class="input" value="SPA" />
+                    placeholder="Insira o objecto social" class="input" value="Prestação de Serviços Contábeis" />
                 </div>
 
-                <!-- Data de constituicao -->
+                <!-- Data de constituição -->
                 <div>
                   <label for="data-de-constituicao" class="label">
                     Data de constituição <span class="text-red-500">*</span>
                   </label>
-                  <input type="date" id="data-de-constituicao" name="data-de-constituicao" required class="input" />
+                  <input type="date" id="data-de-constituicao" name="data-de-constituicao" required class="input"
+                    value="2020-06-15" />
                 </div>
 
                 <!-- Capital social -->
@@ -263,7 +273,7 @@
                     Capital Social <span class="text-red-500">*</span>
                   </label>
                   <input type="number" step="1000" id="capital-social" name="capital-social" required
-                    placeholder="Insira o capital social" class="input" value="1000000" />
+                    placeholder="Insira o capital social" class="input" value="2000000" />
                 </div>
 
                 <!-- Representante -->
@@ -275,23 +285,32 @@
                     class="input" value="João da Silva" />
                 </div>
 
-                <!-- Add sócios -->
-                <div class="form-full">
-                  <label class="label">
-                    Sócios <span class="text-red-500">*</span>
-                  </label>
+                <input type="hidden" name="socios_json" id="socios-json">
 
-                  <button type="button" data-micromodal-trigger="modal-socios"
-                    class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium text-gray-700 transition-all border border-gray-200 rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
-                    <span>Adicionar Sócios</span>
-                    <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
-                  </button>
+                <!-- Grupo de Sócios -->
+                <div id="grupo-socios" class="form-full">
+                  <!-- Botão Add Sócios -->
+                  <div class="form-full">
+                    <label class="label">
+                      Sócios <span class="text-red-500">*</span>
+                    </label>
+                    <button type="button" data-micromodal-trigger="modal-socios"
+                      class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium text-gray-700 transition-all border border-gray-200 rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+                      <span>Adicionar Sócios</span>
+                      <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+                    </button>
+                  </div>
+
+                  <!-- Lista de Sócios -->
+                  <div id="lista-socios" class="form-full">
+                    <!-- Sócios adicionados aparecem aqui -->
+                  </div>
                 </div>
 
-                <!-- Botão de Actualizar -->
+                <!-- Botão de editar -->
                 <div class="mt-2 form-full">
-                  <button type="submit" class="btn bg-primary" onclick="window.location.href='ver-empresas.html'">
-                    Actualizar Empresa
+                  <button type="submit" class="btn bg-primary">
+                    Actualizar Cliente
                   </button>
                 </div>
               </form>

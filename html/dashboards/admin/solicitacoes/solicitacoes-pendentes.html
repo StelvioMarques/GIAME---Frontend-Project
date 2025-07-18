@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light dark" />
-  <title>Clientes cadastrados</title>
+  <title>Solicitações pendentes</title>
 
   <link rel="stylesheet" href="../../../../css/tailwind/output.css">
   <link rel="stylesheet" href="../../../../css/index.css">
@@ -40,77 +40,73 @@
       <!-- Conteúdo da sidebar -->
       <div class="flex-1 overflow-y-auto">
         <nav class="p-4">
-
           <!-- Item direto: Dashboard -->
           <a href="../index.html" class="sidebar-link">
             <i data-lucide="layout-dashboard" class="w-5 h-5 collapsibble-menu-icons"></i>
             Dashboard
           </a>
 
-          <!-- Seção: acessos -->
+          <!-- Seção: Solicitações -->
           <div class="collapsible-section">
             <button
               class="collapsible-trigger sidebar-link w-full flex items-center justify-between px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 group">
               <div class="flex items-center gap-2">
-                <i data-lucide="Shield" class="w-4 h-4 collapsibble-menu-icons"></i>
-                <span class="truncate">Gerir Acessos</span>
+                <i data-lucide="mail-plus" class="w-4 h-4 collapsibble-menu-icons"></i>
+                <span class="truncate">Solicitações</span>
               </div>
               <i data-lucide="chevron-down" class="w-4 h-4 collapsibble-menu-icons dropdown-transition"></i>
             </button>
 
             <div class="mt-1 collapsible-content">
               <div class="pl-4 space-y-1 border-l-2">
-                <a href="solicitacoes-pendentes.html" class="sidebar-subitem">
-                  <i data-lucide="Inbox" class="w-4 h-4"></i> Solicitações pendentes
-                </a>
-                <a href="clientes-cadastrados.html" class="sidebar-subitem">
-                  <i data-lucide="Contact" class="w-4 h-4"></i> Clientes cadastrados
+                <a href="../solicitacoes/solicitacoes-pendentes.html" class="sidebar-subitem">
+                  <i data-lucide="clock-alert" class="w-4 h-4"></i> Solicitações pendentes
                 </a>
               </div>
             </div>
           </div>
 
-          <!-- Seção: Utilizadores -->
+          <!-- Seção: Usuários -->
           <div class="collapsible-section">
             <button
               class="collapsible-trigger sidebar-link w-full flex items-center justify-between px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 group">
               <div class="flex items-center gap-2">
                 <i data-lucide="user-cog" class="w-4 h-4 collapsibble-menu-icons"></i>
-                <span class="truncate">Gerir Utilizadores</span>
+                <span class="truncate">Gerir Usuários</span>
               </div>
               <i data-lucide="chevron-down" class="w-4 h-4 collapsibble-menu-icons dropdown-transition"></i>
             </button>
 
             <div class="mt-1 collapsible-content">
               <div class="pl-4 space-y-1 border-l-2">
-                <a href="../gestao-de-usuarios/ver-usuarios.html" class="sidebar-subitem">
-                  <i data-lucide="users" class="w-4 h-4"></i> Ver Utilizadores
+                <a href="../usuarios/ver-usuarios.html" class="sidebar-subitem">
+                  <i data-lucide="users" class="w-4 h-4"></i> Ver Usuários
                 </a>
-                <a href="../gestao-de-usuarios/criar-usuario.html" class="sidebar-subitem">
-                  <i data-lucide="plus" class="w-4 h-4"></i> Criar Utilizador
+                <a href="../usuarios/ver-usuarios.html" class="sidebar-subitem">
+                  <i data-lucide="plus" class="w-4 h-4"></i> Criar Usuário
                 </a>
               </div>
             </div>
           </div>
 
-          <!-- Seção: Empresas -->
+          <!-- Seção: Clientes -->
           <div class="collapsible-section">
             <button
               class="collapsible-trigger sidebar-link w-full flex items-center justify-between px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 group">
               <div class="flex items-center gap-2">
-                <i data-lucide="briefcase" class="w-4 h-4 collapsibble-menu-icons"></i>
-                <span class="truncate">Gerir Empresas</span>
+                <i data-lucide="user-cog" class="w-4 h-4 collapsibble-menu-icons"></i>
+                <span class="truncate">Gerir Clientes</span>
               </div>
               <i data-lucide="chevron-down" class="w-4 h-4 collapsibble-menu-icons dropdown-transition"></i>
             </button>
 
             <div class="mt-1 collapsible-content">
               <div class="pl-4 space-y-1 border-l-2">
-                <a href="../gestao-de-empresas/ver-empresas.html" class="sidebar-subitem">
-                  <i data-lucide="building2" class="w-4 h-4"></i> Ver Empresas
+                <a href="../clientes/ver-clientes.html" class="sidebar-subitem">
+                  <i data-lucide="users" class="w-4 h-4"></i> Ver clientes
                 </a>
-                <a href="../gestao-de-empresas/criar-empresa.html" class="sidebar-subitem">
-                  <i data-lucide="plus" class="w-4 h-4"></i> Criar Empresa
+                <a href="../clientes/adicionar-cliente.html" class="sidebar-subitem">
+                  <i data-lucide="plus" class="w-4 h-4"></i> Adicionar Cliente
                 </a>
               </div>
             </div>
@@ -182,7 +178,7 @@
       <main class="flex-1 overflow-auto">
         <div class=" page-content">
           <h1 class="text-3xl font-semibold text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text">
-            Clientes Cadastrados
+            Solicitações pendentes
           </h1>
 
           <!-- Search -->
@@ -191,7 +187,7 @@
               <span class="absolute inset-y-0 flex items-center text-gray-400 left-3">
                 <i data-lucide="search" class="w-4 h-4"></i>
               </span>
-              <input type="text" placeholder="Pesquisar cliente..."
+              <input type="text" placeholder="Pesquisar usuário..."
                 class="w-full px-10 py-2 text-sm transition-all duration-200 ease-in-out border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:outline-none" />
             </div>
           </div>
@@ -225,7 +221,7 @@
                     <td>Empresa</td>
                     <td>joao@email.com</td>
                     <td>3</td>
-                    <td class="px-3 font-semibold text-primary">Ag.Login</td>
+                    <td class="font-semibold text-highlight">Pendente</td>
                     <td>senha123</td>
                     <td class="pr-4 text-right">
                       <div class="relative">
@@ -239,11 +235,11 @@
                           <div class="py-1">
                             <button
                               class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50 btn-acao"
-                              data-tipo="confirmar" data-msg="Tem a certeza que quer desactivar este cliente?"
+                              data-tipo="confirmar" data-msg="Deseja realmente activar este cliente?"
                               data-title="Confirmar Operação">
 
-                              <i data-lucide="x" class="w-4 h-4"></i>
-                              Desactivar
+                              <i data-lucide="check" class="w-4 h-4"></i>
+                              Activar
                             </button>
                             <button onclick="window.location.href = 'editar-dados.html'"
                               class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
@@ -253,7 +249,6 @@
                             <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left btn-acao"
                               data-tipo="apagar" data-msg="Tem certeza que quer remover este cliente?"
                               data-title="Remover Cliente">
-
                               <i data-lucide="trash2" class="w-4 h-4"></i>
                               Remover
                             </button>
@@ -272,7 +267,7 @@
                     <td>Particular</td>
                     <td>maria@email.com</td>
                     <td>12</td>
-                    <td class="px-3 font-semibold text-primary">Ag.Login</td>
+                    <td class="font-semibold text-highlight">Pendente</td>
                     <td>senha456</td>
                     <td class="pr-4 text-right">
                       <div class="relative">
@@ -286,11 +281,11 @@
                           <div class="py-1">
                             <button
                               class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50 btn-acao"
-                              data-tipo="confirmar" data-msg="Tem a certeza que quer desactivar este cliente?"
+                              data-tipo="confirmar" data-msg="Deseja realmente activar este cliente?"
                               data-title="Confirmar Operação">
 
-                              <i data-lucide="x" class="w-4 h-4"></i>
-                              Desactivar
+                              <i data-lucide="check" class="w-4 h-4"></i>
+                              Activar
                             </button>
                             <button onclick="window.location.href = 'editar-dados.html'"
                               class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
@@ -300,7 +295,6 @@
                             <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left btn-acao"
                               data-tipo="apagar" data-msg="Tem certeza que quer remover este cliente?"
                               data-title="Remover Cliente">
-
                               <i data-lucide="trash2" class="w-4 h-4"></i>
                               Remover
                             </button>
@@ -319,7 +313,7 @@
                     <td>Empresa</td>
                     <td>carlos@empresa.com</td>
                     <td>5</td>
-                    <td class="px-3 font-semibold text-primary">Ag.Login</td>
+                    <td class="font-semibold text-highlight">Pendente</td>
                     <td>senha789</td>
                     <td class="pr-4 text-right">
                       <div class="relative">
@@ -333,11 +327,11 @@
                           <div class="py-1">
                             <button
                               class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50 btn-acao"
-                              data-tipo="confirmar" data-msg="Tem a certeza que quer desactivar este cliente?"
+                              data-tipo="confirmar" data-msg="Deseja realmente activar este cliente?"
                               data-title="Confirmar Operação">
 
-                              <i data-lucide="x" class="w-4 h-4"></i>
-                              Desactivar
+                              <i data-lucide="check" class="w-4 h-4"></i>
+                              Activar
                             </button>
                             <button onclick="window.location.href = 'editar-dados.html'"
                               class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
@@ -347,7 +341,98 @@
                             <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left btn-acao"
                               data-tipo="apagar" data-msg="Tem certeza que quer remover este cliente?"
                               data-title="Remover Cliente">
+                              <i data-lucide="trash2" class="w-4 h-4"></i>
+                              Remover
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
 
+                  <tr>
+                    <td>4</td>
+                    <td>Sara Machel</td>
+                    <td>Lubango, Angola</td>
+                    <td>+244 931 333 444</td>
+                    <td>789456123</td>
+                    <td>Particular</td>
+                    <td>sara.machel@gmail.com</td>
+                    <td>1</td>
+                    <td class="font-semibold text-highlight">Pendente</td>
+                    <td>provisorio1</td>
+                    <td class="pr-4 text-right">
+                      <div class="relative">
+                        <button
+                          class="p-1 text-gray-500 transition-colors duration-200 rounded-full hover:text-gray-700 hover:bg-gray-100"
+                          onclick="toggleDropdown(this)">
+                          <i data-lucide="more-vertical" class="w-4 h-4"></i>
+                        </button>
+
+                        <div class="hidden bg-white border border-gray-200 rounded-lg shadow-lg w-36 dropdown-menu">
+                          <div class="py-1">
+                            <button
+                              class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50 btn-acao"
+                              data-tipo="confirmar" data-msg="Deseja realmente activar este cliente?"
+                              data-title="Confirmar Operação">
+
+                              <i data-lucide="check" class="w-4 h-4"></i>
+                              Activar
+                            </button>
+                            <button onclick="window.location.href = 'editar-dados.html'"
+                              class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
+                              <i data-lucide="edit" class="w-4 h-4"></i>
+                              Editar
+                            </button>
+                            <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left btn-acao"
+                              data-tipo="apagar" data-msg="Tem certeza que quer remover este cliente?"
+                              data-title="Remover Cliente">
+                              <i data-lucide="trash2" class="w-4 h-4"></i>
+                              Remover
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>5</td>
+                    <td>Joaquim Neto</td>
+                    <td>Cabinda, Angola</td>
+                    <td>+244 944 555 666</td>
+                    <td>321654987</td>
+                    <td>Empresa</td>
+                    <td>joaquim@neto.com</td>
+                    <td>7</td>
+                    <td class="font-semibold text-highlight">Pendente</td>
+                    <td>neto123</td>
+                    <td class="pr-4 text-right">
+                      <div class="relative">
+                        <button
+                          class="p-1 text-gray-500 transition-colors duration-200 rounded-full hover:text-gray-700 hover:bg-gray-100"
+                          onclick="toggleDropdown(this)">
+                          <i data-lucide="more-vertical" class="w-4 h-4"></i>
+                        </button>
+
+                        <div class="hidden bg-white border border-gray-200 rounded-lg shadow-lg w-36 dropdown-menu">
+                          <div class="py-1">
+                            <button
+                              class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50 btn-acao"
+                              data-tipo="confirmar" data-msg="Deseja realmente activar este cliente?"
+                              data-title="Confirmar Operação">
+
+                              <i data-lucide="check" class="w-4 h-4"></i>
+                              Activar
+                            </button>
+                            <button onclick="window.location.href = 'editar-dados.html'"
+                              class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
+                              <i data-lucide="edit" class="w-4 h-4"></i>
+                              Editar
+                            </button>
+                            <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left btn-acao"
+                              data-tipo="apagar" data-msg="Tem certeza que quer remover este cliente?"
+                              data-title="Remover Cliente">
                               <i data-lucide="trash2" class="w-4 h-4"></i>
                               Remover
                             </button>

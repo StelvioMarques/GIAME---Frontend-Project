@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light dark" />
-  <title>Lista Contas</title>
+  <title>Usuários Operacionais</title>
 
   <link rel="stylesheet" href="../../../../css/tailwind/output.css">
   <link rel="stylesheet" href="../../../../css/index.css">
@@ -126,10 +126,10 @@
 
             <div class="mt-1 collapsible-content">
               <div class="pl-4 space-y-1 border-l-2">
-                <a href="ver-contas.html" class="sidebar-subitem">
+                <a href="../PGC/ver-contas.html" class="sidebar-subitem">
                   <i data-lucide="list" class="w-4 h-4"></i> Ver Contas
                 </a>
-                <a href="criar-conta.html" class="sidebar-subitem">
+                <a href="../PGC/criar-conta.html" class="sidebar-subitem">
                   <i data-lucide="plus" class="w-4 h-4"></i> Criar Conta
                 </a>
               </div>
@@ -177,9 +177,9 @@
 
       <!-- Conteúdo -->
       <main class="flex-1 overflow-auto">
-        <div class="page-content">
+        <div class=" page-content">
           <h1 class="text-3xl font-semibold text-transparent bg-gradient-to-r from-primary to-secondary bg-clip-text">
-            Contas cadastradas
+            Usuários
           </h1>
 
           <div class="flex flex-col gap-2">
@@ -187,11 +187,11 @@
             <div class="flex gap-2 mt-2">
               <button onclick="showTab('tab1')" id="tab-tab1"
                 class="px-4 py-2 text-sm font-medium text-white transition-all duration-200 border border-gray-200 rounded-lg tab-button bg-primary">
-                Por empresa
+                Pendentes
               </button>
               <button onclick="showTab('tab2')" id="tab-tab2"
                 class="px-4 py-2 text-sm font-medium text-gray-700 transition-all duration-200 border border-gray-200 rounded-lg tab-button hover:bg-gray-100">
-                Compartilhado por empresas
+                Aprovados
               </button>
             </div>
 
@@ -202,16 +202,16 @@
                 <span class="absolute inset-y-0 flex items-center text-gray-400 left-3">
                   <i data-lucide="search" class="w-4 h-4"></i>
                 </span>
-                <input type="text" placeholder="Pesquisar empresa..."
+                <input type="text" placeholder="Pesquisar usuário..."
                   class="w-full px-10 py-2 text-sm transition-all duration-200 ease-in-out border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:outline-none" />
               </div>
 
               <!-- Botão Registrar -->
               <button
                 class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition-colors rounded-lg bg-primary"
-                onclick="window.location.href='criar-conta.html'">
+                onclick="window.location.href='criar-usuario.html'">
                 <i data-lucide="plus" class="w-4 h-4"></i>
-                Criar Conta
+                Criar Usuário
               </button>
             </div>
           </div>
@@ -222,22 +222,24 @@
                 <table class="w-full text-sm text-left text-gray-700 ">
                   <thead class="">
                     <tr>
-                      <th>Role</th>
-                      <th>Nº</th>
+                      <th>ID</th>
                       <th>Nome</th>
-                      <th>Activo/Passivo</th>
-                      <th>Saldo</th>
+                      <th>Endereço</th>
+                      <th>Contacto</th>
+                      <th>E-mail</th>
+                      <th>Estado</th>
                       <th class="text-right ">Ações</th>
                     </tr>
                   </thead>
 
                   <tbody class="divide-y divide-gray-200">
                     <tr>
-                      <td>Principal</td>
-                      <td>32</td>
-                      <td>Fornecedores</td>
-                      <td>Passivo</td>
-                      <td>0.00</td>
+                      <td>1</td>
+                      <td>João Pedro</td>
+                      <td>Luanda, Angola</td>
+                      <td>+244 999 999 999</td>
+                      <td>joao@email.com</td>
+                      <td class="px-3 font-semibold text-highlight">Pendente</td>
                       <td class="pr-4 text-right">
                         <div class="relative">
                           <button
@@ -248,14 +250,22 @@
 
                           <div class="hidden bg-white border border-gray-200 rounded-lg shadow-lg w-36 dropdown-menu">
                             <div class="py-1">
-                              <button onclick="window.location.href='editar-conta.html'"
-                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
-                                <i data-lucide="edit3" class="w-4 h-4"></i>
+                              <button
+                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50 btn-acao"
+                                data-tipo="confirmar" data-msg="Deseja realmente activar este usuário?"
+                                data-title="Confirmar Operação">
+
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                                Activar
+                              </button>
+                              <button onclick="window.location.href = 'editar-dados.html'"
+                                class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
+                                <i data-lucide="edit" class="w-4 h-4"></i>
                                 Editar
                               </button>
                               <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left btn-acao"
-                                data-tipo="apagar" data-msg="Tem certeza que quer remover esta conta?"
-                                data-title="Remover Conta">
+                                data-tipo="apagar" data-msg="Tem certeza que quer remover este usuário?"
+                                data-title="Remover Usuário">
                                 <i data-lucide="trash2" class="w-4 h-4"></i>
                                 Remover
                               </button>
@@ -266,11 +276,12 @@
                     </tr>
 
                     <tr>
-                      <td>Subconta</td>
-                      <td>32.1</td>
-                      <td>Fornecedores Nacionais</td>
-                      <td>Passivo</td>
-                      <td>0.00</td>
+                      <td>2</td>
+                      <td>Maria Santos</td>
+                      <td>Benguela, Angola</td>
+                      <td>+244 998 888 777</td>
+                      <td>maria@email.com</td>
+                      <td class="px-3 font-semibold text-highlight">Pendente</td>
                       <td class="pr-4 text-right">
                         <div class="relative">
                           <button
@@ -281,14 +292,22 @@
 
                           <div class="hidden bg-white border border-gray-200 rounded-lg shadow-lg w-36 dropdown-menu">
                             <div class="py-1">
-                              <button onclick="window.location.href='editar-conta.html'"
-                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
-                                <i data-lucide="edit3" class="w-4 h-4"></i>
+                              <button
+                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50 btn-acao"
+                                data-tipo="confirmar" data-msg="Deseja realmente activar este usuário?"
+                                data-title="Confirmar Operação">
+
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                                Activar
+                              </button>
+                              <button onclick="window.location.href = 'editar-dados.html'"
+                                class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
+                                <i data-lucide="edit" class="w-4 h-4"></i>
                                 Editar
                               </button>
                               <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left btn-acao"
-                                data-tipo="apagar" data-msg="Tem certeza que quer remover esta conta?"
-                                data-title="Remover Conta">
+                                data-tipo="apagar" data-msg="Tem certeza que quer remover este usuário?"
+                                data-title="Remover Usuário">
                                 <i data-lucide="trash2" class="w-4 h-4"></i>
                                 Remover
                               </button>
@@ -299,11 +318,12 @@
                     </tr>
 
                     <tr>
-                      <td>Conta Associada</td>
-                      <td>32.1.001</td>
-                      <td>Material Eletrônico</td>
-                      <td>Passivo</td>
-                      <td>0.00</td>
+                      <td>3</td>
+                      <td>Carlos Alberto</td>
+                      <td>Huambo, Angola</td>
+                      <td>+244 922 111 222</td>
+                      <td>carlos@empresa.com</td>
+                      <td class="px-3 font-semibold text-highlight">Pendente</td>
                       <td class="pr-4 text-right">
                         <div class="relative">
                           <button
@@ -314,14 +334,22 @@
 
                           <div class="hidden bg-white border border-gray-200 rounded-lg shadow-lg w-36 dropdown-menu">
                             <div class="py-1">
-                              <button onclick="window.location.href='editar-conta.html'"
-                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
-                                <i data-lucide="edit3" class="w-4 h-4"></i>
+                              <button
+                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50 btn-acao"
+                                data-tipo="confirmar" data-msg="Deseja realmente activar este usuário?"
+                                data-title="Confirmar Operação">
+
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                                Activar
+                              </button>
+                              <button onclick="window.location.href = 'editar-dados.html'"
+                                class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
+                                <i data-lucide="edit" class="w-4 h-4"></i>
                                 Editar
                               </button>
                               <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left btn-acao"
-                                data-tipo="apagar" data-msg="Tem certeza que quer remover esta conta?"
-                                data-title="Remover Conta">
+                                data-tipo="apagar" data-msg="Tem certeza que quer remover este usuário?"
+                                data-title="Remover Usuário">
                                 <i data-lucide="trash2" class="w-4 h-4"></i>
                                 Remover
                               </button>
@@ -342,24 +370,24 @@
                 <table class="w-full text-sm text-left text-gray-700 ">
                   <thead class="">
                     <tr>
-                      <th>Role</th>
-                      <th>Nº</th>
+                      <th>ID</th>
                       <th>Nome</th>
-                      <th>Activo/Passivo</th>
-                      <th>Saldo</th>
-                      <th>Empressa</th>
+                      <th>Endereço</th>
+                      <th>Contacto</th>
+                      <th>E-mail</th>
+                      <th>Estado</th>
                       <th class="text-right ">Ações</th>
                     </tr>
                   </thead>
 
                   <tbody class="divide-y divide-gray-200">
                     <tr>
-                      <td>Principal</td>
-                      <td>32</td>
-                      <td>Fornecedores</td>
-                      <td>Passivo</td>
-                      <td>0.00</td>
-                      <td>12345LA049</td>
+                      <td>1</td>
+                      <td>João Pedro</td>
+                      <td>Luanda, Angola</td>
+                      <td>+244 999 999 999</td>
+                      <td>joao@email.com</td>
+                      <td class="px-3 font-semibold text-primary">Aprovado</td>
                       <td class="pr-4 text-right">
                         <div class="relative">
                           <button
@@ -370,14 +398,22 @@
 
                           <div class="hidden bg-white border border-gray-200 rounded-lg shadow-lg w-36 dropdown-menu">
                             <div class="py-1">
-                              <button onclick="window.location.href='editar-conta.html'"
-                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
-                                <i data-lucide="edit3" class="w-4 h-4"></i>
+                              <button
+                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50 btn-acao"
+                                data-tipo="confirmar" data-msg="Deseja realmente desactivar este usuário?"
+                                data-title="Confirmar Operação">
+
+                                <i data-lucide="x" class="w-4 h-4"></i>
+                                Desactivar
+                              </button>
+                              <button onclick="window.location.href = 'editar-dados.html'"
+                                class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
+                                <i data-lucide="edit" class="w-4 h-4"></i>
                                 Editar
                               </button>
                               <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left btn-acao"
-                                data-tipo="apagar" data-msg="Tem certeza que quer remover esta conta?"
-                                data-title="Remover Conta">
+                                data-tipo="apagar" data-msg="Tem certeza que quer remover este usuário?"
+                                data-title="Remover Usuário">
                                 <i data-lucide="trash2" class="w-4 h-4"></i>
                                 Remover
                               </button>
@@ -388,12 +424,12 @@
                     </tr>
 
                     <tr>
-                      <td>Subconta</td>
-                      <td>32.1</td>
-                      <td>Fornecedores Nacionais</td>
-                      <td>Passivo</td>
-                      <td>0.00</td>
-                      <td>12345LA049</td>
+                      <td>2</td>
+                      <td>Maria Santos</td>
+                      <td>Benguela, Angola</td>
+                      <td>+244 998 888 777</td>
+                      <td>maria@email.com</td>
+                      <td class="px-3 font-semibold text-primary">Aprovado</td>
                       <td class="pr-4 text-right">
                         <div class="relative">
                           <button
@@ -404,14 +440,22 @@
 
                           <div class="hidden bg-white border border-gray-200 rounded-lg shadow-lg w-36 dropdown-menu">
                             <div class="py-1">
-                              <button onclick="window.location.href='editar-conta.html'"
-                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
-                                <i data-lucide="edit3" class="w-4 h-4"></i>
+                              <button
+                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50 btn-acao"
+                                data-tipo="confirmar" data-msg="Deseja realmente desactivar este usuário?"
+                                data-title="Confirmar Operação">
+
+                                <i data-lucide="x" class="w-4 h-4"></i>
+                                Desactivar
+                              </button>
+                              <button onclick="window.location.href = 'editar-dados.html'"
+                                class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
+                                <i data-lucide="edit" class="w-4 h-4"></i>
                                 Editar
                               </button>
                               <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left btn-acao"
-                                data-tipo="apagar" data-msg="Tem certeza que quer remover esta conta?"
-                                data-title="Remover Conta">
+                                data-tipo="apagar" data-msg="Tem certeza que quer remover este usuário?"
+                                data-title="Remover Usuário">
                                 <i data-lucide="trash2" class="w-4 h-4"></i>
                                 Remover
                               </button>
@@ -422,12 +466,12 @@
                     </tr>
 
                     <tr>
-                      <td>Conta Associada</td>
-                      <td>32.1.001</td>
-                      <td>Material Eletrônico</td>
-                      <td>Passivo</td>
-                      <td>0.00</td>
-                      <td>45678LA049</td>
+                      <td>3</td>
+                      <td>Carlos Alberto</td>
+                      <td>Huambo, Angola</td>
+                      <td>+244 922 111 222</td>
+                      <td>carlos@empresa.com</td>
+                      <td class="px-3 font-semibold text-primary">Aprovado</td>
                       <td class="pr-4 text-right">
                         <div class="relative">
                           <button
@@ -438,14 +482,22 @@
 
                           <div class="hidden bg-white border border-gray-200 rounded-lg shadow-lg w-36 dropdown-menu">
                             <div class="py-1">
-                              <button onclick="window.location.href='editar-conta.html'"
-                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
-                                <i data-lucide="edit3" class="w-4 h-4"></i>
+                              <button
+                                class="flex items-center w-full gap-1 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50 btn-acao"
+                                data-tipo="confirmar" data-msg="Deseja realmente desactivar este usuário?"
+                                data-title="Confirmar Operação">
+
+                                <i data-lucide="x" class="w-4 h-4"></i>
+                                Desactivar
+                              </button>
+                              <button onclick="window.location.href = 'editar-dados.html'"
+                                class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-50">
+                                <i data-lucide="edit" class="w-4 h-4"></i>
                                 Editar
                               </button>
                               <button class="flex items-center w-full gap-2 px-4 py-2 text-sm text-left btn-acao"
-                                data-tipo="apagar" data-msg="Tem certeza que quer remover esta conta?"
-                                data-title="Remover Conta">
+                                data-tipo="apagar" data-msg="Tem certeza que quer remover este usuário?"
+                                data-title="Remover Usuário">
                                 <i data-lucide="trash2" class="w-4 h-4"></i>
                                 Remover
                               </button>
