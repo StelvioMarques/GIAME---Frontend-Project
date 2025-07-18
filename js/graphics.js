@@ -12,7 +12,7 @@ new Chart(ctxPrazo, {
     ],
     datasets: [{
       label: 'Clientes',
-      data: [4, 6, 10, 4, 7, 4], 
+      data: [4, 6, 10, 4, 7, 4],
       backgroundColor: '#154A99',
       borderRadius: 3,
       barThickness: 38
@@ -54,7 +54,7 @@ new Chart(ctxPrazo, {
 
 
 // Gráfico de Pizza (Distribuição de Contas)
-const ctxContas = document.getElementById('graficoContas');
+/* const ctxContas = document.getElementById('graficoContas');
 new Chart(ctxContas, {
   type: 'doughnut',
   data: {
@@ -126,3 +126,4 @@ new Chart(ctxLanc, {
     }
   }
 });
+ */
